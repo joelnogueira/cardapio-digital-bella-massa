@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio-1</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="login.css">
+
+</head>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --fonte-secundaria: 'Montserrat', sans-serif;
+
+  }
+
+  :root{
+    --cor-verde:#7DC441;
+    --cor-amarela:#FFBC3F;
+    --cor-rosa:#F693AF;
+    --cor-laranja:#FEA855;
+    --cor-preta:#141414;
+    --fonte-principal: 'Momo Trust Display', sans-serif;
+    --fonte-secundaria: 'Montserrat', sans-serif;
+  }
+
+  /* Estilo base = Mobile */
+
+  body{
+    height: 100vh;
+    background-image: url(assets/fundo-bella-massa.png);
+    background-size: cover;
+    background-position: center;
+  }
+  
+  main{
+    height: 100vh;
+    padding: 0px 10px;
+  }
+  header{
+    background-image: url(assets/fundo-bella-massa.png);
+    background-size: cover;
+    background-position: center;
+    padding: 10px 20px;
+    margin-bottom:10px;
+    border-radius:0px 0px 20px 20px;
+    position: sticky;
+    top:0;
+    z-index:1;
+    box-shadow: 0px 10px 12px 0px #201919cf;
+  }
+  nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+  }
+  nav .logo{
+    width:90px;
+    height:90px;
+
+    & img{
+      width:100%;
+      height: 100%;
+      object-fit:cover;
+    }
+    & img:hover{
+      cursor:pointer;
+    }
+  }
+
+  
+
+  .endereco{
+    margin-top: 3px;
+    color: white;
+    margin-left:30px;
+    
+    & p{
+        font-family: var(--fonte-secundaria);
+        font-size:12px;
+      }
+    
+  }
+
+.linha{
+  margin-bottom: 15px;
+  height: 130px;
+  border-radius:0px 0px 20px 20px;
+  cursor:pointer;
+}
+.linha:hover{
+  transform: scale(1.02);
+  transition: 0.3s all ease;
+}
+
+.col{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cat-nome{
+  font-weight: bold;
+  color:white;
+  font-family: var(--fonte-principal);
+}
+
+.cat-imagem{
+  position: relative;
+  
+  & img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+}
+.nome-left, .imagem-left{
+  border-radius: 0px 0px 0px 20px;
+}
+.nome-right, .imagem-right{
+  border-radius: 0px 0px 20px 0px;
+}
+.cat_entrada:active{
+  border:2px solid var(--cor-verde);
+}
+
+.admin{
+  display:flex;
+  gap:20px;
+  & ion-icon{
+    font-size: 22px;
+    color: white;
+  }
+  & ion-icon:hover{
+    cursor:pointer;
+  }
+}
+
+footer{
+  margin-top:30px;
+  padding-bottom:5px;
+  & a{
+    text-decoration:none;
+    color:var(--cor-laranja);
+    font-size:15px;
+    font-weight:bold;
+    border:1px solid var(--cor-laranja);
+    border-radius:0px 0px 10px 10px;
+    padding:4px 10px;
+    font-family: var(--fonte-secundaria);
+  }
+  & a:hover{
+    background-color:var(--cor-laranja);
+    color:white;
+    transition: 0.3s all ease;
+  }
+  & p{
+    color:var(--cor-laranja);
+  }
+}
+.logo-footer{
+  width:80px;
+  height:80px;
+  & img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+  }
+
+}
+
+.pin-input {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #141414;
+  color: var(--cor-laranja);
+  letter-spacing: 4px;
+  outline: none;
+  transition: .25s;
+}
+
+.pin-input:focus {
+  border-color: var(--cor-laranja);
+}
+
+.btn-pin {
+  font-family: var(--fonte-secundaria);
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  background: var(--cor-verde);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #fff;
+  transition: .25s;
+}
+
+.btn-pin:hover {
+  background: var(--cor-laranja);
+}
+
+
+/* Animação de erro */
+.shake {
+  animation: shake .3s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+
+
+
+</style>
+<body id="body-tema">
+  <main>
+
+    <header>
+      <nav>
+        <div class="logo">
+          <img src="assets/logo-bella-massa.png" alt="">
+        </div>
+        <div class="admin">
+          <ion-icon name="logo-whatsapp" id="whatsapp"></ion-icon>
+          <ion-icon name="person-outline" data-bs-toggle="modal" data-bs-target="#exampleModal"></ion-icon>
+        </div>
+      </nav>
+      <div class="endereco">
+        <div>
+          <p> <ion-icon name="time-outline"></ion-icon>
+            <span id="horario"> </span> <br> 
+            <ion-icon name="location-outline"></ion-icon> Zango-2, Rua da Dona Malha</p>
+        </div>
+      </div>
+    </header>
+
+    
+<!-- Modal -->
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" 
+    style="background-color: var(--cor-preta);
+          color:var(--cor-laranja);
+          font-family: var(--fonte-secundaria);"
+          >
+      <div class="modal-header">
+        <h1 class="modal-title fs-6" id="exampleModalLabel"> Acesso do Restaurante </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+
+        <div class="text-center">
+          <form id="pinForm">
+            <input type="password"
+                  id="pinInput"
+                  maxlength="4"
+                  class="pin-input"
+                  placeholder="Digite o PIN"
+                  autocomplete="off">
+            <button type="submit" class="btn-pin">Entrar</button>
+          </form>
+
+          <small class="text-muted d-block mt-2" 
+          style="color: var(--cor-laranja) !important; font-size:11px;"
+          >*PIN de 4 dígitos</small>
+        </div>
+
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+    <!--Fim Modal -->
+
+    
+
+    <div class="container text-center"  id="stage">
+        <div class="row linha cat_entrada" onclick="cat_entrada()">
+        <div class="col cat-nome nome-left" style="background-color:var(--cor-verde)">
+          <h1>Entrada</h1>
+        </div>
+        <div class="col cat-imagem " >
+          <img src="assets/entrada.jpg" alt="" class="imagem-right">
+        </div>
+      </div>
+      <div class="row linha cat_prato_principal" onclick="cat_prato_principal()">
+        <div class="col cat-imagem">
+          <img src="assets/principal.jpg" alt="" class="imagem-left">
+        </div>
+        <div class="col cat-nome nome-right" style="background-color:var(--cor-amarela)">
+          <h1>Prato Principal</h1>
+        </div>
+      </div>
+      <div class="row linha">
+        <div class="col cat-nome nome-left" style="background-color:var(--cor-rosa)">
+          <h1>Sobremesas</h1>
+        </div>
+        <div class="col cat-imagem">
+          <img src="assets/sobremesas.jpg" alt="" class="imagem-right">
+        </div>
+      </div>
+      <div class="row linha">
+        <div class="col cat-imagem">
+          <img src="assets/bebidas.jpg" alt="" class="imagem-left">
+        </div>
+        <div class="col cat-nome nome-right" style="background-color:var(--cor-laranja)">
+          <h1>Bebidas</h1>
+        </div>
+        
+      </div>
+
+    </div>
+
+    <footer>
+      <div class="footer-content d-flex justify-content-center align-items-center gap-4">
+        <a href="#"> Quem Somos ? </a>
+        <div class="logo-footer">
+          <img src="assets/logo-bella-massa.png" alt="bella-massa-logo">
+        </div>
+      </div>
+      <p class="text-center" style="font-family: var(--fonte-secundaria); font-size:11px; margin-top:10px;">Desenvolvido por Joel Nogueira  &copy; 2025</p>
+    </footer>
+
+  </main>
+
+
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+  <script src="scripts/main.js"></script>
+
+  <script>
+    /*  Script para o Form do Login  */
+        document.getElementById("pinForm").addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const input = document.getElementById("pinInput");
+          const pinCorreto = "1234"; // <- ALTERAR AQUI
+
+          if (input.value === pinCorreto) {
+            // Sucesso
+            input.style.borderColor = "#28a745";
+            // Aqui você pode redirecionar ou exibir o painel
+            alert("Acesso liberado ✅");
+          } else {
+            // Erro -> animação + limpar campo
+            input.classList.add("shake");
+            input.style.borderColor = "#ff3b30";
+            setTimeout(() => input.classList.remove("shake"), 300);
+            input.value = "";
+          }
+        });
+
+        // Aceitar apenas números
+        document.getElementById("pinInput").addEventListener("input", function () {
+          this.value = this.value.replace(/\D/g, "");
+        });
+  </script>
+  
+</body>
+</html>

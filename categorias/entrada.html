@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+
+<style>
+    
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --fonte-secundaria: 'Montserrat', sans-serif;
+
+  }
+
+  :root{
+    --cor-verde:#7DC441;
+    --cor-amarela:#FFBC3F;
+    --cor-rosa:#F693AF;
+    --cor-laranja:#FEA855;
+    --cor-preta:#141414;
+    --fonte-principal: 'Momo Trust Display', sans-serif;
+    --fonte-secundaria: 'Montserrat', sans-serif;
+  }
+
+    .titulo-categoria{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:10px;
+        font-family: var(--fonte-secundaria);
+        font-size: 15px;
+        color:var(--cor-verde);
+        cursor:pointer;
+        
+        & ion-icon{
+            font-size:20px;
+        }
+        & p{
+            font-weight:bold;
+            text-decoration:underline;
+        }
+    }
+  .destaque{
+      color:#FFBC3F;
+      font-size:10px;
+      font-family:var(--fonte-secundaria);
+    }
+
+
+    .row{
+        background-color: #333;
+        margin-bottom: 15px;
+        height: 130px;
+        cursor:pointer;
+    }
+    .row:hover{
+        transform: scale(1.02);
+        transition: 0.3s all ease;
+    }
+    .col{
+        padding:10px;
+    }
+
+    .descricao{
+        height:100%;
+        width:100%;
+        display:flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items:start;
+        font-family: var(--fonte-secundaria);
+        font-size: 15px;
+        text-align: start;
+        color: #fff;
+
+        & h5{
+          font-size:16px;
+          font-family: var(--fonte-principal);
+        }
+        & small{
+          font-size:13px;
+          color:var(--cor-laranja);
+        }
+        & p{
+          font-size:12px;
+          font-weight:bold;
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          gap:5px;
+          color:var(--cor-laranja);
+
+        }
+    }
+    .imagemBox{
+        border:1px solid white;
+        border-radius:15px;
+        height:100%;
+        width:80%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+    
+    
+</style>
+<body>
+        <div class="container mb-3 d-flex justify-content-start align-items-center">
+            <div class="titulo-categoria" onclick="menu_inicial()">
+                    <ion-icon name="arrow-back-outline"></ion-icon>
+                    <p>ENTRADA</p>
+            </div>
+        </div>
+
+        
+
+
+        <div class="destaque">
+          <p><strong>Destaques:</strong> ⭐ Prato da Casa | 🔥 Mais Vendido | 🆕 Novo no Menu</p>
+        </div>
+        
+    <div class="row">
+        <div class="col">
+          <div class="descricao">
+              <h5><ion-icon name="restaurant-outline"></ion-icon> <span id="">Spaghetti à Bolonhesa</span> </h5>
+              <small id="">Molho artesanal com carne fresca.</small>
+              <p>
+                <span id="destaque">⭐</span>
+                <span>|</span>
+                <span id="preco">2.500 kz</span>
+              </p>
+          </div>
+        </div>
+        <div class="col" >
+          <div class="imagemBox">
+            <h1>Foto</h1>
+          </div>
+        </div>
+      </div>
+    <div class="row">
+        <div class="col">
+          <div class="descricao">
+              <h5><ion-icon name="restaurant-outline"></ion-icon> 
+                <span id="">Funje de Calulú</span></h5>
+              <small id="">Molho sujo com rama.</small>
+              <p>
+                <span id="destaque">🔥</span>
+                <span>|</span>
+                <span id="preco">1.200 kz</span>
+              </p>
+          </div>
+        </div>
+        <div class="col" >
+          <div class="imagemBox">
+            <h1>Foto</h1>
+          </div>
+        </div>
+      </div>
+
+
+      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+      <script src="../scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio-1</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="login.css">
+
+</head>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+  }
+
+  :root{
+    --cor-verde:#7DC441;
+    --cor-amarela:#FFBC3F;
+    --cor-rosa:#F693AF;
+    --cor-laranja:#FEA855;
+    --cor-preta:#141414;
+    --fonte-principal: 'Momo Trust Display', sans-serif;
+    --fonte-secundaria: 'Montserrat', sans-serif;
+  }
+
+  /* Estilo base = Mobile */
+
+  body{
+    height: 100vh;
+    background-image: url(../assets/fundo-bella-massa.png);
+    background-size: cover;
+    background-position: center;
+  }
+  
+  main{
+    height: 100vh;
+    padding: 0px 10px;
+  }
+  header{
+    background-image: url(../assets/fundo-bella-massa.png);
+    background-size: cover;
+    background-position: center;
+    padding: 10px 20px;
+    margin-bottom:10px;
+    border-radius:0px 0px 20px 20px;
+    position: sticky;
+    top:0;
+    z-index:1;
+    box-shadow: 0px 10px 12px 0px #201919cf;
+  }
+  nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+  }
+  nav .logo{
+    width:90px;
+    height:90px;
+
+    & img{
+      width:100%;
+      height: 100%;
+      object-fit:cover;
+    }
+    & img:hover{
+      cursor:pointer;
+    }
+  }
+
+
+
+  .admin{
+  display:flex;
+  gap:20px;
+  & ion-icon{
+    font-size: 22px;
+    color: white;
+  }
+  & ion-icon:hover{
+    cursor:pointer;
+  }
+}
+  .config{
+  display:flex;
+  padding-left: 10px;
+  & ion-icon{
+    font-size: 22px;
+    color: white;
+  }
+  & ion-icon:hover{
+    cursor:pointer;
+  }
+}
+
+
+
+.card-form {
+  background: #111;
+  padding: 18px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  color: var(--cor-laranja);
+}
+
+.form-group label {
+  font-size: 13px;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  border: 1px solid #333;
+  background: #1a1a1a;
+  padding: 12px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: .25s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--cor-laranja);
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #7cc441ce, #7DC441);
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .25s;
+  font-family: var(--fonte-secundaria);
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px #73ff005d;
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Preview da imagem */
+.img-preview {
+  margin-top: 8px;
+  width: 100%;
+  height: 160px;
+  background: #000;
+  border: 1px dashed #444;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #555;
+  font-size: 14px;
+}
+
+.img-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-content{
+  background-color: var(--cor-preta);
+  color:var(--cor-laranja);
+  font-family: var(--fonte-secundaria);
+}
+
+.input-busca {
+  width: 100%;
+  padding: 7px;
+  font-size: 14px;
+  background: var(--cor-preta);
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: var(--cor-laranja);
+  outline: none;
+  transition: .25s;
+  font-family: var(--fonte-secundaria);
+}
+.input-busca:focus {
+  border-color: var(--cor-laranja);
+}
+
+
+
+.lista-pratos {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.prato-card {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 12px;
+  color: #fff;
+  font-family: var(--fonte-secundaria);
+}
+
+.prato-card img {
+  width: 100px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.prato-info h4 {
+  margin-bottom: 1px;
+  font-size: 13px;
+  font-family: var(--fonte-principal);
+}
+.prato-info strong {
+  font-size: 13px;
+  color: var(--cor-laranja);
+}
+
+.prato-info p {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 12px;
+  color: var(--cor-laranja);
+}
+.prato-info small {
+  display: block;
+  font-size: 11.5px;
+  color: #aaa;
+}
+.prato-info .destaque {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 10px;
+  font-weight: bold;
+  color: var(--cor-laranja);
+}
+
+.prato-acoes{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.prato-acoes button {
+  margin-left: 6px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn-editar { background: #0a84ff; color: #fff; }
+.btn-excluir { background: #ff3b30; color: #fff; }
+
+
+
+.btn-novo-prato {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top:10px;
+  padding: 8px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #7cc441ce, #7DC441);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.25s;
+  letter-spacing: 0.3px;
+  box-shadow: 0 0 0px transparent;
+  font-family: var(--fonte-secundaria);
+}
+
+.btn-novo-prato:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px #73ff005d;
+}
+
+.btn-novo-prato:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+
+
+
+
+</style>
+<body id="body-tema">
+  <main>
+
+    <header>
+      <nav>
+        <div class="admin">
+          <ion-icon name="home-outline"></ion-icon>
+        </div>
+
+        <div class="logo">
+          <img src="../assets/logo-bella-massa.png" alt="">
+        </div>
+        
+      </nav>
+      <div class="config">
+        <div>
+          <ion-icon name="settings-outline"></ion-icon>
+        </div>
+      </div>
+    </header>
+
+
+    <section>
+
+      <div class="mt-4 mb-2"> 
+        <input type="text" autofocus id="buscarPrato" class="input-busca" placeholder=" Buscar prato pelo nome...">
+      </div>
+
+        <button id="btnNovoPrato" class="btn-novo-prato" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="document.getElementById('formCardapio').reset(); document.getElementById('preview').innerHTML = ''; document.querySelector('input[name=id]').value = '';">
+
+          <span>+ Cadastrar novo prato</span>
+        </button>
+
+        <h3 class="text-light mt-4" style="font-family: var(--fonte-secundaria); font-size: 14px;">Pratos cadastrados</h3>
+        <div id="listaPratos" class="lista-pratos"></div>
+
+        
+<!-- Modal -->
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-6" id="exampleModalLabel"> Acesso do Restaurante </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+
+        <form id="formCardapio" class="card-form">
+  
+        <div class="form-group">
+            <label>Nome do prato</label>
+            <input type="text" id="nomePrato" name="nome" placeholder="Ex: Frango grelhado com legumes" required >
+        </div>
+
+        <div class="form-group">
+            <label>Breve descrição</label>
+            <textarea name="descricao" id="descricao" placeholder="Ex: Preparado com temperos naturais e acompanhado de arroz..." rows="3" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Destaque</label>
+            <select name="destaque">
+            <option value="" selected>Nenhum</option>
+            <option value="Prato da casa">Prato da Casa</option>
+            <option value="Mais vendido">Mais Vendido</option>
+            <option value="Novo no menu">Novo no Menu</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Preço (Kz)</label>
+            <input type="number" id="preco" name="preco" step="0.01" min="0" placeholder="Ex: 3200" required>
+        </div>
+
+        <div class="form-group">
+            <label>Categoria</label>
+            <select name="categoria" required>
+            <option value="" selected>Selecione</option>
+            <option value="Entrada">Entrada</option>
+            <option value="Prato principal">Prato Principal</option>
+            <option value="Sobremesa">Sobremesa</option>
+            <option value="Bebida">Bebida</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Imagem do prato</label>
+            <input type="file" name="imagem" accept="image/*" id="imgInput">
+            <div class="img-preview" id="preview"></div>
+        </div>
+
+        <input type="hidden" name="id">
+
+        <button type="submit" class="btn-submit">Cadastrar</button>
+
+        </form>
+
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+    <!--Fim Modal -->
+
+    <div class="modal fade" id="modalConfirmar" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="background:#141414; color:#fff; border:1px solid #333; font-size:12px;">
+      <div class="modal-header">
+        <h5 class="modal-title" style="font-size:15px; color:var(--cor-laranja); ">Confirmar exclusão</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Tem certeza que deseja remover este prato do menu?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" 
+        style="font-size:13px; padding:2px; ">Cancelar</button>
+        <button type="button" class="btn btn-danger" id="btnConfirmarExcluir" 
+        style="font-size:13px; padding:2px; ">Excluir</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        
+
+    </section>
+
+
+  </main>
+
+
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+  <script>
+
+  document.addEventListener("DOMContentLoaded", function() {
+
+  const nomeInput = document.getElementById("nomePrato");
+  const descInput = document.getElementById("descricao");
+  const precoInput = document.getElementById("preco");
+
+  nomeInput.addEventListener("input", function() {
+    const maxLength = 50; 
+    this.value = this.value.slice(0, maxLength);
+    this.value = this.value.charAt(0).toUpperCase() + this.value.slice(1);
+  });
+
+  descInput.addEventListener("input", function() {
+    const maxLength = 100; 
+    this.value = this.value.slice(0, maxLength);
+    this.value = this.value.charAt(0).toUpperCase() + this.value.slice(1);
+  });
+
+  precoInput.addEventListener("input", function() {
+    const maxLength = 6;
+    this.value = this.value.slice(0, maxLength);
+
+    // permite apenas números e vírgula/ponto
+    this.value = this.value.replace(/[^0-9.,]/g, "");
+  });
+
+});
+
+
+
+
+
+    document.getElementById("imgInput").addEventListener("change", function() {
+    const preview = document.getElementById("preview");
+    const file = this.files[0];
+
+    if(file){
+        const reader = new FileReader();
+        reader.onload = () => {
+        preview.innerHTML = `<img src="${reader.result}" alt="preview">`;
+        }
+        reader.readAsDataURL(file);
+    } else {
+        preview.innerHTML = "";
+    }
+    });
+
+let pratosCache = []; // Armazena os pratos carregados
+
+function carregarPratos() {
+  fetch("listar_pratos.php")
+    .then(r => r.json())
+    .then(pratos => {
+      pratosCache = pratos; // Guardar pratos localmente
+      exibirPratos(pratos); // Mostrar na tela
+    });
+}
+
+function exibirPratos(lista) {
+  const container = document.getElementById("listaPratos");
+  container.innerHTML = "";
+
+  lista.forEach(prato => {
+
+    // Tratamento do destaque com icone
+    let destaqueTexto = "";
+    switch (prato.destaque) {
+      case "Prato da casa":
+        destaqueTexto = "⭐ Prato da Casa";
+        break;
+      case "Mais vendido":
+        destaqueTexto = "🔥 Mais Vendido";
+        break;
+      case "Novo no menu":
+        destaqueTexto = "🆕 Novo no Menu";
+        break;
+    }
+
+    let nomeCurto = prato.nome;
+    if (nomeCurto.length == 50) {
+      nomeCurto = nomeCurto.slice(0, 50) + '...';
+    }
+          
+    let descricaoCurto = prato.descricao;
+    if (descricaoCurto.length == 100) {
+      descricaoCurto = descricaoCurto.slice(0, 100) + '...';
+    }
+    container.innerHTML += `
+      <div class="prato-card">
+        <img src="../${prato.imagem || 'assets/no-image.png'}">
+
+        <div class="prato-info">
+
+          
+
+          <h4>${nomeCurto}</h4>
+          <p>${prato.descricao}</p>
+          <small>${prato.categoria}</small>
+          <strong>${prato.preco} Kz</strong>
+          ${destaqueTexto ? `<small class="destaque">${destaqueTexto}</small>` : ""}
+        </div>
+
+        <div class="prato-acoes ms-auto">
+          <button class="btn-editar" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editarPrato(${prato.id})">Editar</button>
+          <button class="btn-excluir" onclick="confirmarExclusao(${prato.id})">Excluir</button>
+        </div>
+      </div>
+    `;
+  });
+}
+
+// Filtro em tempo real
+document.getElementById("buscarPrato").addEventListener("input", function() {
+  const termo = this.value.toLowerCase();
+  const filtrados = pratosCache.filter(p => p.nome.toLowerCase().includes(termo));
+  exibirPratos(filtrados);
+});
+
+carregarPratos();
+
+const ModalAdicionar = new bootstrap.Modal(document.getElementById('exampleModal'));
+
+document.getElementById("formCardapio").addEventListener("submit", function(e) { 
+  e.preventDefault(); 
+  const formData = new FormData(this); 
+  const form = document.getElementById("formCardapio"); 
+  fetch("adicionar_prato.php", { 
+    method: "POST", 
+    body: formData, 
+  }) 
+  .then((response) => response.json()) 
+  .then((data) => { 
+    if (data.status === "sucesso") {
+      form.reset(); 
+      // Limpar o formulário após o sucesso 
+      document.getElementById("preview").innerHTML = ""; 
+      carregarPratos();
+    }}); 
+    //fechar o modal do formulario 
+    ModalAdicionar.hide();
+
+  });
+
+
+  function editarPrato(id) {
+
+  fetch(`buscar_prato.php?id=${id}`)
+    .then(r => r.json())
+    .then(d => {
+      document.querySelector("input[name='nome']").value = d.nome;
+      document.querySelector("textarea[name='descricao']").value = d.descricao;
+      document.querySelector("select[name='categoria']").value = d.categoria;
+      document.querySelector("select[name='destaque']").value = d.destaque;
+      document.querySelector("input[name='preco']").value = d.preco;
+      document.querySelector("input[name='id']").value = d.id; // campo hidden p/ edição
+
+      // Se quiser mostrar imagem
+      document.getElementById("preview").innerHTML = `<img src="../${d.imagem}">`;
+    });
+  }
+
+
+let pratoParaExcluir = null;
+const modal = new bootstrap.Modal(document.getElementById('modalConfirmar'));
+
+function confirmarExclusao(id) {
+  pratoParaExcluir = id;
+  modal.show();
+}
+
+document.getElementById("btnConfirmarExcluir").addEventListener("click", function() {
+  fetch("excluir_prato.php?id=" + pratoParaExcluir)
+    .then(r => r.json())
+    .then(d => {
+      if(d.status === "sucesso") {
+        carregarPratos();
+        modal.hide();
+      }
+    });
+});
+
+</script>
+
+<script>
+
+
+</script>
+
+
+  
+</body>
+</html>
