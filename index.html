@@ -87,6 +87,7 @@
     & p{
         font-family: var(--fonte-secundaria);
         font-size:12px;
+        letter-spacing: 1px;
       }
     
   }
@@ -228,6 +229,53 @@ footer{
 }
 
 
+
+.listaPrato{
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    margin-bottom: 15px;
+    padding: 10px;
+    height: auto;
+    cursor:pointer;
+}
+.listaPrato:hover{
+    transform: scale(1.02);
+    transition: 0.3s all ease;
+}
+
+
+.prato-info {
+  word-wrap: break-word;  
+  white-space: normal;    
+  overflow-wrap: break-word;
+  align-items:start;
+  font-family: var(--fonte-secundaria);
+  text-align: start;
+  color: #fff;
+
+  & h4{
+    font-size:15px;
+    font-family: var(--fonte-principal);
+  }
+  & p{
+    font-size:13px;
+    color:var(--cor-laranja);
+  }
+}
+.prato-imagem{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    & img{
+      height:100px;
+      width:150px;
+      object-fit:cover;
+      border-radius:8px;
+    }
+
+  }
 
 
 </style>

@@ -210,14 +210,15 @@
 .lista-pratos {
   display: grid;
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 15px;
 }
 
 .prato-card {
   background: #111;
   border: 1px solid #333;
   border-radius: 10px;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   padding: 10px;
   gap: 12px;
@@ -232,34 +233,26 @@
   border-radius: 8px;
 }
 
-.prato-info h4 {
-  margin-bottom: 1px;
-  font-size: 13px;
-  font-family: var(--fonte-principal);
+.prato-info {
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  & h4{
+    font-size:13px;
+    font-family: var(--fonte-principal);
+  }
+  & p{
+    font-size:11px;
+    color:var(--cor-laranja);
+  }
 }
-.prato-info strong {
-  font-size: 13px;
-  color: var(--cor-laranja);
-}
+.prato-info .categ {
+    display: block;
+    font-size: 11px;
+    color: #aaa;
+  }
 
-.prato-info p {
-  display: block;
-  margin-bottom: 3px;
-  font-size: 12px;
-  color: var(--cor-laranja);
-}
-.prato-info small {
-  display: block;
-  font-size: 11.5px;
-  color: #aaa;
-}
-.prato-info .destaque {
-  display: inline-block;
-  margin-top: 4px;
-  font-size: 10px;
-  font-weight: bold;
-  color: var(--cor-laranja);
-}
 
 .prato-acoes{
   display: flex;
@@ -368,7 +361,7 @@
   
         <div class="form-group">
             <label>Nome do prato</label>
-            <input type="text" id="nomePrato" name="nome" placeholder="Ex: Frango grelhado com legumes" required >
+            <input type="text" id="nomePrato" name="nome" placeholder="Ex: Frango grelhado com legumes" autofocus required >
         </div>
 
         <div class="form-group">
@@ -538,27 +531,28 @@ function exibirPratos(lista) {
     }
 
     let nomeCurto = prato.nome;
-    if (nomeCurto.length == 50) {
-      nomeCurto = nomeCurto.slice(0, 50) + '...';
+    if (nomeCurto.length > 45) {
+      nomeCurto = nomeCurto.slice(0, 45) + '...';
     }
           
     let descricaoCurto = prato.descricao;
-    if (descricaoCurto.length == 100) {
-      descricaoCurto = descricaoCurto.slice(0, 100) + '...';
+    if (descricaoCurto.length > 95) {
+      descricaoCurto = descricaoCurto.slice(0, 95) + '...';
     }
     container.innerHTML += `
       <div class="prato-card">
         <img src="../${prato.imagem || 'assets/no-image.png'}">
 
         <div class="prato-info">
-
-          
-
           <h4>${nomeCurto}</h4>
           <p>${prato.descricao}</p>
-          <small>${prato.categoria}</small>
-          <strong>${prato.preco} Kz</strong>
-          ${destaqueTexto ? `<small class="destaque">${destaqueTexto}</small>` : ""}
+          <small class="categ">${prato.categoria}</small>
+          <p>
+              <strong>${prato.preco} Kz</strong>
+                  ${destaqueTexto ? `<small class="destaque">${destaqueTexto}</small>` : ""}
+            </p>
+
+          
         </div>
 
         <div class="prato-acoes ms-auto">
