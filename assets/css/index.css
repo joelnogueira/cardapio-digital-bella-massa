@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --fonte-secundaria: 'Montserrat', sans-serif;
+
+  }
+
+  :root{
+    --cor-verde:#7DC441;
+    --cor-amarela:#FFBC3F;
+    --cor-rosa:#F693AF;
+    --cor-laranja:#FEA855;
+    --cor-preta:#141414;
+    --fonte-principal: 'Momo Trust Display', sans-serif;
+    --fonte-secundaria: 'Montserrat', sans-serif;
+  }
+
+  /* Estilo base = Mobile */
+
+  body{
+    height: 100vh;
+    background-image: url(../img/fundo-bella-massa.png);
+    background-size: cover;
+    background-position: center;
+  }
+  
+  main{
+    height: 100vh;
+    padding: 0px 10px;
+  }
+  header{
+    background-image: url(../img/fundo-bella-massa.png);
+    background-size: cover;
+    background-position: center;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+    border-radius:0px 0px 20px 20px;
+    position: sticky;
+    top:0;
+    z-index:1;
+    box-shadow: 0px 10px 12px 0px #201919cf;
+  }
+  nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+  }
+  nav .logo{
+    width:90px;
+    height:90px;
+
+    & img{
+      width:100%;
+      height: 100%;
+      object-fit:cover;
+    }
+    & img:hover{
+      cursor:pointer;
+    }
+  }
+
+  
+
+  .endereco{
+    margin-top: 3px;
+    color: white;
+    margin-left:30px;
+    
+    & p{
+        font-family: var(--fonte-secundaria);
+        font-size:12px;
+        letter-spacing: 1px;
+      }
+    
+  }
+
+.linha{
+  margin-bottom: 15px;
+  height: 130px;
+  border-radius:0px 0px 20px 20px;
+  cursor:pointer;
+}
+.linha:hover{
+  transform: scale(1.02);
+  transition: 0.3s all ease;
+}
+
+.col{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cat-nome{
+  font-weight: bold;
+  color:white;
+  font-family: var(--fonte-principal);
+}
+
+.cat-imagem{
+  position: relative;
+  
+  & img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+}
+.nome-left, .imagem-left{
+  border-radius: 0px 0px 0px 20px;
+}
+.nome-right, .imagem-right{
+  border-radius: 0px 0px 20px 0px;
+}
+.cat_entrada:active{
+  border:2px solid var(--cor-verde);
+}
+
+.admin{
+  display:flex;
+  gap:20px;
+  & ion-icon{
+    font-size: 22px;
+    color: white;
+  }
+  & ion-icon:hover{
+    cursor:pointer;
+  }
+}
+
+footer{
+  margin-top:30px;
+  padding-bottom:5px;
+  & a{
+    text-decoration:none;
+    color:var(--cor-laranja);
+    font-size:15px;
+    font-weight:bold;
+    border:1px solid var(--cor-laranja);
+    border-radius:0px 0px 10px 10px;
+    padding:4px 10px;
+    font-family: var(--fonte-secundaria);
+  }
+  & a:hover{
+    background-color:var(--cor-laranja);
+    color:white;
+    transition: 0.3s all ease;
+  }
+  & p{
+    color:var(--cor-laranja);
+  }
+}
+.logo-footer{
+  width:80px;
+  height:80px;
+  cursor:pointer;
+  & img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+  }
+
+}
+
+.pin-input {
+  width: 100%;
+  padding: 15px;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #141414;
+  color: var(--cor-laranja);
+  letter-spacing: 3px;
+  outline: none;
+  transition: .25s;
+}
+
+.pin-input:focus {
+  border-color: var(--cor-laranja);
+}
+
+.btn-pin {
+  font-family: var(--fonte-secundaria);
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px;
+  background: var(--cor-verde);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #fff;
+  transition: .25s;
+}
+
+.btn-pin:hover {
+  background: var(--cor-laranja);
+}
+
+
+/* Animação de erro */
+.shake {
+  animation: shake .3s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+.recuperar-pin {
+  color:  var(--cor-laranja);
+  display:flex;
+  justify-content:start;
+  align-items:center;
+  & ion-icon{
+    font-size: 22px;
+    cursor:pointer;
+  }
+}
+.alert{
+  display:none;
+  margin:0 auto;
+  padding:0px;
+  color: #e01c1cff;
+  font-family: var(--fonte-secundaria);
+  font-size:12px;
+  font-weight:bold;
+  text-align:center;
+  transition:0.3s all ease;
+}
+.alert2{
+  color: var(--cor-laranja);
+}
+
+
+
+.listaPrato{
+    display: flex;
+    align-items: center;
+    background-color:#333 ;
+    margin-bottom: 15px;
+    padding: 10px;
+    height: auto;
+    cursor:pointer;
+}
+.listaPrato:hover{
+    transform: scale(1.02);
+    transition: 0.3s all ease;
+}
+
+
+.prato-info {
+  word-wrap: break-word;  
+  white-space: normal;    
+  overflow-wrap: break-word;
+  align-items:start;
+  font-family: var(--fonte-secundaria);
+  text-align: start;
+  color: #fff;
+
+  & h4{
+    font-size:15px;
+    font-family: var(--fonte-principal);
+  }
+  & p{
+    font-size:13px;
+    color:var(--cor-laranja);
+  }
+}
+.prato-imagem{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    & img{
+      height:100px;
+      width:150px;
+      object-fit:cover;
+      border-radius:8px;
+    }
+
+  }
+
+
+
+  

@@ -1,5 +1,18 @@
 <?php
 include "config.php";
+session_start();
 
-$stmt = $pdo->query("SELECT * FROM pratos ORDER BY id DESC");
-echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+if (!isset($_SESSION['usuario'])) {
+    echo json_encode([]);
+    exit;
+}
+
+$idUsuario = $_SESSION['usuario'];
+
+$stmt = $pdo->prepare("SELECT * FROM pratos WHERE id_usuario = ? ORDER BY id DESC");
+$stmt->execute([$idUsuario]);
+
+$pratos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+echo json_encode($pratos);
+exit;

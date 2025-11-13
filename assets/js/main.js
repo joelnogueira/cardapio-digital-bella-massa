@@ -82,13 +82,11 @@ function ativarEntrada() {
 
           <div class="col-6">
             <div class="prato-imagem">
-              <img src="${prato.imagem || "assets/no-image.png"}">
+              <img src="${prato.imagem}">
             </div>
           </div>
 
         </div>
-
-          
       `;
     });
   }
@@ -110,6 +108,7 @@ function ativarEntrada() {
 function menu_inicial() {
   carregarPagina("categorias/menu-inicial.html");
 }
+
 function cat_entrada() {
   carregarPagina("categorias/entrada.html");
 }
@@ -133,7 +132,7 @@ function carregarPagina(url) {
         
       } 
       else if (url === "categorias/menu-inicial.html") {
-        alert("testando mais");
+
       } 
     })
     .catch((error) => {

@@ -1,14 +1,17 @@
 <?php
 header("Content-Type: application/json; charset=utf-8");
-
 include_once "config.php";
+session_start();
 
-/*session_start();
+// ATIVE modo exceção (coloque no config.php idealmente)
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
-    header('Location: ../frontend/sessao.html');
+// Verifica usuário logado
+$usuarioId = $_SESSION['usuario'] ?? null;
+if (!$usuarioId) {
+    echo json_encode(["status" => "erro", "mensagem" => "Usuário não autenticado."]);
     exit;
-}*/
+}
 
 $uploadDir = '../assets/uploads/';
 if (!file_exists($uploadDir)) {
@@ -18,23 +21,19 @@ if (!file_exists($uploadDir)) {
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $idPrato = $_POST['id'] ?? null; // ID do prato (se for edição)
 
-    $nome = $_POST['nome'] ?? '';
-    $descricao = $_POST['descricao'] ?? '';
+    $nome = trim($_POST['nome'] ?? '');
+    $descricao = trim($_POST['descricao'] ?? '');
     $destaque = $_POST['destaque'] ?? '';
     $categoria = $_POST['categoria'] ?? '';
     $preco = $_POST['preco'] ?? '';
     $imagem = $_FILES['imagem'] ?? null;
 
-    // Validação obrigatória
     if (empty($nome)) {
         echo json_encode(["status" => "erro", 'mensagem' => "Campo 'Nome' é obrigatório."]);
         exit;
     }
 
-    // Caminho da imagem no BD
     $caminhoBD = null;
-
-    // Se o usuário enviou uma nova imagem
     if ($imagem && $imagem['error'] === UPLOAD_ERR_OK && $imagem['size'] > 0) {
         if ($imagem['size'] > 2 * 1024 * 1024) {
             echo json_encode(['status' => 'erro', 'mensagem' => 'Imagem excede 2MB.']);
@@ -56,26 +55,28 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         move_uploaded_file($imagem['tmp_name'], $caminhoFinal);
     }
 
-    // Se for EDIÇÃO (tem id do prato)
+    // EDIÇÃO
     if (!empty($idPrato)) {
-        // Se for editar, atualize os dados. Verifica se o id pertence ao prato.
-        $sqlVerifica = "SELECT * FROM pratos WHERE id = ? ";
+        // Verifica se o prato existe e pertence ao usuário
+        $sqlVerifica = "SELECT * FROM pratos WHERE id = ? AND id_usuario = ?";
         $stmtVerifica = $pdo->prepare($sqlVerifica);
-        $stmtVerifica->execute([$idPrato, ]);
+        $stmtVerifica->execute([$idPrato, $usuarioId]);
 
         if ($stmtVerifica->rowCount() === 0) {
-            echo json_encode(["status" => "erro", "mensagem" => "Prato não encontrado."]);
+            echo json_encode(["status" => "erro", "mensagem" => "Prato não encontrado ou sem permissão."]);
             exit;
         }
 
-        // Se não foi enviada nova imagem, manter a antiga
+        $row = $stmtVerifica->fetch(PDO::FETCH_ASSOC);
+
+        // manter imagem antiga se não enviou nova
         if (!$caminhoBD) {
-            $caminhoBD = $stmtVerifica->fetch()['imagem'];
+            $caminhoBD = $row['imagem'];
         }
 
-        $sqlUpdate = "UPDATE pratos SET nome = ?, descricao = ?, preco = ?, categoria = ?, destaque = ?, imagem = ? WHERE id = ? ";
+        $sqlUpdate = "UPDATE pratos SET nome = ?, descricao = ?, preco = ?, categoria = ?, destaque = ?, imagem = ? WHERE id = ? AND id_usuario = ?";
         $stmt = $pdo->prepare($sqlUpdate);
-        $stmt->execute([$nome, $descricao, $preco, $categoria, $destaque, $caminhoBD, $idPrato, ]);
+        $stmt->execute([$nome, $descricao, $preco, $categoria, $destaque, $caminhoBD, $idPrato, $usuarioId]);
 
         echo json_encode([
             "status" => "sucesso",
@@ -85,23 +86,24 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         exit;
     }
 
-    // Caso contrário, é adição de novo contato
-    // Verifica se nome já existe
-    $stmt = $pdo->prepare("SELECT * FROM pratos WHERE nome = ?");
-    $stmt->execute([$nome]);
+    // ADIÇÃO: verifica se já existe prato com mesmo nome **do mesmo usuário**
+    $stmt = $pdo->prepare("SELECT * FROM pratos WHERE nome = ? AND id_usuario = ?");
+    $stmt->execute([$nome, $usuarioId]);
     if ($stmt->rowCount() > 0) {
         echo json_encode(["status" => "erro", "mensagem" => "Este prato já está no seu menu."]);
         exit;
     }
 
-    $stmt = $pdo->prepare("INSERT INTO pratos (nome, descricao, preco, categoria, destaque, imagem) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->execute([$nome, $descricao, $preco, $categoria, $destaque, $caminhoBD]);
+    // Inserir incluindo id_usuario
+    $stmt = $pdo->prepare("INSERT INTO pratos (nome, descricao, preco, categoria, destaque, imagem, id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$nome, $descricao, $preco, $categoria, $destaque, $caminhoBD, $usuarioId]);
 
     echo json_encode([
         "status" => "sucesso",
         "mensagem" => "Prato adicionado com sucesso.",
         "imagem" => $caminhoBD
     ]);
+    exit;
 } else {
     echo json_encode(["status" => "erro", "mensagem" => "Método de requisição inválido"]);
 }
