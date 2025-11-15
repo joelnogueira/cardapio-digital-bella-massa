@@ -69,7 +69,7 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] != true) {
                   <input type="password" id="redifinirPin2" name="senha2" maxlength="4" class="pin-input" mb-2
                     placeholder="Digite o PIN Novo" autocomplete="off">
 
-                  <input type="text" id="redifinirTelefone" name="telefone" class="telefone-input" placeholder="Digite o Whatsapp" autocomplete="off">
+                  <input type="text" id="redifinirTelefone" name="telefone" class="telefone-input" placeholder="Matem ou cadastre outro telefone" autocomplete="off">
 
                   <button type="submit" class="btn-pin">Enviar</button>
                 </form>

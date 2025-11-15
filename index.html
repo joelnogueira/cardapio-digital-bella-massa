@@ -7,16 +7,40 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
   <link rel="stylesheet" href="assets/css/index.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  
 
 </head>
 
 <body id="body-tema">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<div id="loaderAnimate" class="animate__animated animate__fadeIn">
+    <div class="loader-box">
+      <div class="imagem">
+        <img src="assets/img/logo-bella-massa.png" class="loader-icon animate__animated animate__heartBeat animate__infinite" alt="logo-bella-massa">
+      </div>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <p class="loader-text">Preparando o cardápio...</p>
+    </div>
+</div>
+
+
   <main>
 
     <header>
       <nav>
         <div class="logo" onclick="menu_inicial()">
-          <img src="assets/img/logo-bella-massa.png" alt="">
+          <img src="assets/img/logo-bella-massa.png" alt="logotipo bella massa">
         </div>
         <div class="admin">
           <ion-icon name="logo-whatsapp" id="whatsapp"></ion-icon>
@@ -115,55 +139,85 @@
     <!--Fim Modal RECUPERAR PIN -->
 
 
-
-
+    <!--ESPAÇO PARA O CARREGAMENTO DAS PAGINAS -->
+    <div class="container text-center"  id="stage"></div>
     
 
-    <div class="container text-center"  id="stage">
-        <div class="row linha cat_entrada" onclick="cat_entrada()">
-        <div class="col cat-nome nome-left" style="background-color:var(--cor-verde)">
-          <h1>Entrada</h1>
-        </div>
-        <div class="col cat-imagem " >
-          <img src="assets/img/entrada.jpg" alt="" class="imagem-right">
-        </div>
-      </div>
-      <div class="row linha cat_prato_principal" onclick="cat_prato_principal()">
-        <div class="col cat-imagem">
-          <img src="assets/img/principal.jpg" alt="" class="imagem-left">
-        </div>
-        <div class="col cat-nome nome-right" style="background-color:var(--cor-amarela)">
-          <h1>Prato Principal</h1>
-        </div>
-      </div>
-      <div class="row linha">
-        <div class="col cat-nome nome-left" style="background-color:var(--cor-rosa)">
-          <h1>Sobremesas</h1>
-        </div>
-        <div class="col cat-imagem">
-          <img src="assets/img/sobremesas.jpg" alt="" class="imagem-right">
-        </div>
-      </div>
-      <div class="row linha">
-        <div class="col cat-imagem">
-          <img src="assets/img/bebidas.jpg" alt="" class="imagem-left">
-        </div>
-        <div class="col cat-nome nome-right" style="background-color:var(--cor-laranja)">
-          <h1>Bebidas</h1>
-        </div>
-        
+
+    <!--MODAL QUEM-SOMOS? -->
+<div class="modal fade" id="modalQuemSomos" tabindex="-1">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content ">
+
+      <div class="modal-header border-0">
+        <h5 class="modal-title animated-title">Quem Somos?</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
       </div>
 
+      <div class="modal-body">
+
+        <!-- Carousel Bootstrap -->
+        <div id="carouselQuemSomos" class="carousel slide mb-4" data-bs-ride="carousel">
+          
+          <div class="carousel-inner">
+
+            <div class="carousel-item active">
+              <img src="assets/img/img_restaurante.png" class="d-block w-100 slide-img" alt="...">
+            </div>
+
+            <div class="carousel-item">
+              <img src="assets/img/img_restaurante2.png" class="d-block w-100 slide-img" alt="...">
+            </div>
+
+            <div class="carousel-item">
+              <img src="assets/img/img_restaurante3.png" class="d-block w-100 slide-img" alt="...">
+            </div>
+
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselQuemSomos" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </button>
+
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselQuemSomos" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <!-- Texto com animação -->
+        <div class="quem-somos-text">
+          <h2 class="fade-in">O Nosso Restaurante</h2>
+          <p class="fade-in delay-1">
+            Somos um restaurante dedicado a oferecer pratos frescos, saborosos e preparados com
+            ingredientes selecionados. A nossa missão é proporcionar uma experiência gastronômica
+            única, combinando tradição, inovação e hospitalidade.
+          </p>
+          <p class="fade-in delay-2">
+            Cada prato é preparado com ingredientes selecionados para proporcionar uma experiência única.
+          </p>
+          <p class="fade-in delay-3">
+            Cada detalhe é pensado para garantir que você se sinta em casa, desfrutando de um
+            ambiente acolhedor e refeições preparadas com carinho por nossa equipa.
+          </p>
+          <p class="fade-in delay-4">
+            Bem-vindo ao sabor que conquista todos os dias.
+          </p>
+        </div>
+
+      </div>
     </div>
+  </div>
+</div>
+
 
     <footer>
       <div class="footer-content d-flex justify-content-center align-items-center gap-4">
-        <a href="#"> Quem Somos ? </a>
+        <p data-bs-toggle="modal" data-bs-target="#modalQuemSomos"> Quem Somos ? </p>
         <div class="logo-footer" onclick="menu_inicial()">
           <img src="assets/img/logo-bella-massa.png" alt="bella-massa-logo">
         </div>
       </div>
-      <p class="text-center" style="font-family: var(--fonte-secundaria); font-size:11px; margin-top:10px;">Desenvolvido por Joel Nogueira  &copy; 2025</p>
+      <p class="text-center joel-Nogueira" style="font-family: var(--fonte-secundaria); font-size:11px; margin-top:10px;">Desenvolvido por Joel Nogueira  &copy; 2025</p>
     </footer>
 
   </main>
@@ -175,129 +229,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/login.js"></script>
 
-  <script>
-
-
-
-    /*  Script para o Form do Login  */
-
-  document.addEventListener("DOMContentLoaded", function () {
-
-  const input = document.getElementById("pinInput");
-  const inputTelefone = document.getElementById("telefoneLogin");
-
-  // Aceitar apenas números
-  document.addEventListener("input", function (e) {
-    if (e.target.classList.contains("pin-input")) {
-      e.target.value = e.target.value.replace(/\D/g, "");
-    }
-  });
-  // Validar o campo de telefone para aceitar apenas números e o formato +2449xxxxxxx
-    document.getElementById("telefoneLogin").addEventListener("input", function (e) {
-        const inputTelefone = e.target;
-      // Permite apenas 1 sinal de "+" no início e o resto apenas dígitos
-        inputTelefone.value = inputTelefone.value
-            .replace(/[^\d+]/g, "") // Remove tudo exceto dígitos e "+"
-            //.replace(/(?!^)\+/g, "") // Remove "+" que não esteja no início
-            .slice(0, 9); // Limite para 15 caracteres (máximo internacional)
-    });
-  
-
-  document.getElementById("pinForm").addEventListener("submit", function (e){
-    e.preventDefault();
-
-    const formData = new FormData(this);
-
-    fetch("admin/login.php", {
-      method: "POST",
-      body: formData,
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.status === "sucesso") {
-        window.location.href='admin/dashboard.php'
-      } else {
-        input.classList.add("shake");
-        input.style.borderColor = "#ff3b30";
-        setTimeout(() => input.classList.remove("shake"), 300);
-        input.value = "";
-        inputTelefone.classList.add("shake");
-        inputTelefone.style.borderColor = "#ff3b30";
-        setTimeout(() => inputTelefone.classList.remove("shake"), 300);
-        inputTelefone.value = "";
-        console.log(data.mensagem)
-      }
-    });
-  });
-
-});
-
-
-
-  /*  Script para o Form RECUPERAR PIN  */
-
-  document.addEventListener("DOMContentLoaded", function () {
-
-    const ModalRecuperarPin = new bootstrap.Modal(document.getElementById('abrirModalRecuperarPin'));
-
-  const input = document.getElementById("telefone");
-
-  // Validar o campo de telefone para aceitar apenas números e o formato +2449xxxxxxx
-    document.getElementById("telefone").addEventListener("input", function (e) {
-        const inputTelefone = e.target;
-      // Permite apenas 1 sinal de "+" no início e o resto apenas dígitos
-        inputTelefone.value = inputTelefone.value
-            .replace(/[^\d+]/g, "") // Remove tudo exceto dígitos e "+"
-            //.replace(/(?!^)\+/g, "") // Remove "+" que não esteja no início
-            .slice(0, 9); // Limite para 15 caracteres (máximo internacional)
-    });
-  
-
-  document.getElementById("recuperarPinForm").addEventListener("submit", function (e){
-    e.preventDefault();
-
-    const formData = new FormData(this);
-
-    fetch("admin/recuperar_pin.php", {
-      method: "POST",
-      body: formData,
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.status === "sucesso") {
-        //window.location.href='admin/dashboard.php'
-        let alerta = document.querySelector(".alert")
-        alerta.style.display = "block";
-        alerta.textContent = data.mensagem;
-        setTimeout(() => {
-          alerta.style.display = "none";
-          alerta.textContent = "";
-          input.value = "";
-          formData.reset();
-        }, 3000);
-        ModalRecuperarPin.hide();
-        window.open(data.whatsapp, "_blank");
-      } else {
-        input.classList.add("shake");
-        input.style.borderColor = "#ff3b30";
-        setTimeout(() => input.classList.remove("shake"), 300);
-        let alerta = document.querySelector(".alert")
-        alerta.style.display = "block";
-        alerta.textContent = data.mensagem;
-        setTimeout(() => {
-          alerta.style.display = "none";
-          alerta.textContent = "";
-        }, 3000);
-      }
-    });
-  });
-
-});
-
-
-        
-</script>
   
 </body>
 </html>

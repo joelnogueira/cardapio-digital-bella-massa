@@ -7,59 +7,16 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
+    <!--Link do css-->
+    <link rel="stylesheet" href="assets/css/categorias.css">
+    
+
 </head>
 
-
-<style>
-
-  .titulo-categoria{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  font-family: var(--fonte-secundaria);
-  font-size: 15px;
-  color:var(--cor-verde);
-  cursor:pointer;
-  
-  & ion-icon{
-      font-size:20px;
-  }
-  & p{
-      font-weight:bold;
-      text-decoration:underline;
-  }
-}
-
-.input-busca {
-  width: 100%;
-  padding: 7px;
-  font-size: 14px;
-  background: var(--cor-preta);
-  border: 1px solid #333;
-  border-radius: 8px;
-  color: var(--cor-laranja);
-  outline: none;
-  transition: .25s;
-  font-family: var(--fonte-secundaria);
-}
-.input-busca:focus {
-  border-color: var(--cor-laranja);
-}
-
-.destaque{
-  color:#FFBC3F;
-  font-size:10px;
-  font-family:var(--fonte-secundaria);
-}
-
-
-</style>
-
-<body>
+<body >
 
         <div class="container mb-3 d-flex justify-content-start align-items-center">
-            <div class="titulo-categoria" onclick="menu_inicial()">
+            <div class="titulo-categoria entrada_cor" onclick="menu_inicial()">
                     <ion-icon name="arrow-back-outline"></ion-icon>
                     <p>ENTRADA</p>
             </div>

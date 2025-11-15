@@ -1,39 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../login.css">
-</head>
-<body>
-        <div class="container">
-      <div class="hidden">
-        <svg class="lock" width="30" height="40" viewBox="0 0 30 40">
-          <path class="lock-white" d="M 12.519565,0 C 6.7072359,0 2.0282227,4.622895 2.0282227,10.365511 V 19.386852 C 0.81380849,20.12592 0,21.438885 0,22.957364 V 40 H 30 V 22.957364 C 30,21.444973 29.193452,20.135235 27.987171,19.394457 V 10.365511 C 27.987171,4.622895 23.308158,0 17.495831,0 Z M 12.519565,4.384239 H 17.495831 C 20.923632,4.384239 23.682489,7.111909 23.682489,10.498597 V 19.002803 H 6.3309823 V 10.498597 C 6.3309823,7.111909 9.091764,4.384239 12.519565,4.384239 Z" />
-        </svg>
-        <input type="password" class="hidden-input" />
-      </div>
-      <div class="revealed">
-        <svg class="lock" width="30" height="40" viewBox="0 0 30 40">
-          <path class="lock-black" d="M 12.519565,0 C 6.7072359,0 2.0282227,4.622895 2.0282227,10.365511 V 19.386852 C 0.81380849,20.12592 0,21.438885 0,22.957364 V 40 H 30 V 22.957364 C 30,21.444973 29.193452,20.135235 27.987171,19.394457 V 10.365511 C 27.987171,4.622895 23.308158,0 17.495831,0 Z M 12.519565,4.384239 H 17.495831 C 20.923632,4.384239 23.682489,7.111909 23.682489,10.498597 V 19.002803 H 6.3309823 V 10.498597 C 6.3309823,7.111909 9.091764,4.384239 12.519565,4.384239 Z" />
-        </svg>
-        <input class="revealed-input" />
-      </div>
-      <div class="button">
-        <svg class="eye" width="36" height="36" viewBox="0 0 72 72">
-          <path class="eye-lower" d="M 15.6,37 C 15.6,37 24.309181,49.073101 34.102911,49.166773 43.896641,49.260445 53.4,37 53.4,37" />
-          <circle r="6" cy="36" cx="34.400002" class="eye-iris" />
-          <path class="eye-lid" d="M -5,-5 V 37 H 15.6 C 15.6,37 25.327177,48.715274 34.312131,48.785 43.297085,48.854726 53.4,37 53.4,37 H 77 V -5 Z" />
-          <g class="eye-lashes">
-            <path class="eye-lash" d="M 17.45627,17.07484 24.778981,25.652873" />
-            <path class="eye-lash" d="M 34.602,12.600574 V 23.601076" />
-            <path class="eye-lash" d="M 51.580203,17.07484 44.257492,25.652873" />
-          </g>
-        </svg>
-      </div>
-    </div>
+    <title>Prato Principal</title>
 
-    <script src="../login.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!--Link do css-->
+    <link rel="stylesheet" href="assets/css/categorias.css">
+
+</head>
+
+<body>
+
+        <div class="container mb-3 d-flex justify-content-start align-items-center">
+            <div class="titulo-categoria prato_principal_cor" onclick="menu_inicial()">
+                    <ion-icon name="arrow-back-outline"></ion-icon>
+                    <p>PRATO PRINCIPAL</p>
+            </div>
+        </div>
+
+        <div class="mt-4 mb-2"> 
+            <input type="text" autofocus id="buscarPrato" class="input-busca" placeholder=" Buscar prato pelo nome...">
+      </div>
+
+
+        <div class="destaque">
+          <p><strong>Destaques:</strong> ⭐ Prato da Casa | 🔥 Mais Vendido | 🆕 Novo no Menu</p>
+        </div>
+        
+    <div class="container listaPratosCategoria" id="listaPratosCategoria"> </div>
+
+
+      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+      
 </body>
 </html>

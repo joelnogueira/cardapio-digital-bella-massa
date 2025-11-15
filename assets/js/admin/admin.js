@@ -101,9 +101,9 @@ let pratosCache = []; // Armazena os pratos carregados
 function carregarPratos() {
   fetch("listar_pratos.php")
     .then((r) => r.json())
-    .then((pratos) => {
-      pratosCache = pratos; // Guardar pratos localmente
-      exibirPratos(pratos); // Mostrar na tela
+    .then((dados) => {
+      pratosCache = dados.todos_pratos; // Guardar pratos localmente
+      exibirPratos(dados.todos_pratos); // Mostrar na tela
     });
 }
 

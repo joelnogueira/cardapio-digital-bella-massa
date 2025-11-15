@@ -1,0 +1,52 @@
+
+  .titulo-categoria{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font-family: var(--fonte-secundaria);
+  font-size: 15px;
+  cursor:pointer;
+  
+  & ion-icon{
+      font-size:20px;
+  }
+  & p{
+      font-weight:bold;
+      text-decoration:underline;
+  }
+}
+.entrada_cor{
+  color:var(--cor-verde);
+}
+.prato_principal_cor{
+  color:var(--cor-amarela);
+}
+.sobremesas_cor{
+  color:var(--cor-rosa);
+}
+.bebidas_cor{
+  color:var(--cor-laranja);
+}
+
+.input-busca {
+  width: 100%;
+  padding: 7px;
+  font-size: 14px;
+  background: var(--cor-preta);
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: var(--cor-laranja);
+  outline: none;
+  transition: .25s;
+  font-family: var(--fonte-secundaria);
+}
+.input-busca:focus {
+  border-color: var(--cor-laranja);
+}
+
+.destaque{
+  color:#FFBC3F;
+  font-size:10px;
+  font-family:var(--fonte-secundaria);
+}
