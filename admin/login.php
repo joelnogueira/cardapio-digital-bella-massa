@@ -23,7 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($usuario && password_verify($pin, $usuario['senha'])) {
         $_SESSION['usuario'] = $usuario['id'];
         $_SESSION['logado'] = true;
+
         echo json_encode(['status' => 'sucesso']);
+        
     } else {
         echo json_encode(['status' => 'erro', 'mensagem' => 'PIN ou número incorreto.']);
     }

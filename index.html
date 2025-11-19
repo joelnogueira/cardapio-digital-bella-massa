@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cardápio-1</title>
+  <title>Cardápio Digital - Bella Massa</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
   <link rel="stylesheet" href="assets/css/index.css">
@@ -13,6 +14,9 @@
   />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- ICON -->
+<script src="https://kit.fontawesome.com/3f04aa5ab1.js" crossorigin="anonymous"></script>
 
   
 
@@ -30,7 +34,7 @@
         <div class="progress-bar">
             <div class="progress"></div>
         </div>
-        <p class="loader-text">Preparando o cardápio...</p>
+        <p class="loader-text" data-key="preparando_o_cardápio...">Preparando o cardápio...</p>
     </div>
 </div>
 
@@ -47,12 +51,37 @@
           <ion-icon name="person-outline" data-bs-toggle="modal" data-bs-target="#abrirModalLogin"></ion-icon>
         </div>
       </nav>
-      <div class="endereco">
-        <div>
-          <p> <ion-icon name="time-outline"></ion-icon>
-            <span id="horario"> </span> <br> 
-            <ion-icon name="location-outline"></ion-icon> Zango-2, Rua da Dona Malha</p>
+      <div class="dados">
+        <div class="dados-body">
+          <p class="d-flex align-items-center"> 
+            <ion-icon name="time-outline"></ion-icon>
+            <span id="horario"> </span>
+          </p>
+          <p class="d-flex flex-column"> 
+            <div class="endereco d-flex align-items-center">
+              <ion-icon name="restaurant-outline"></ion-icon>
+              <span id="rest_nome"> </span>
+            </div>
+            <div class="endereco d-flex align-items-center">
+              <ion-icon name="location-outline"></ion-icon>
+              <span id="rest_endereco"> </span>
+            </div>
+          </p>
         </div>
+      </div>
+      <div  class="container-xxl  d-flex justify-content-end">
+        <select id="langSwitcher" class="form-select form-select-sm" 
+          style="width:120px;
+          background-color: var(--cor-laranja);
+          border: 1px solid #ccc;
+          padding: 4px 6px;
+          border-radius: 6px;
+          cursor: pointer;
+          font-weight: 500;"
+          >
+          <option value="pt" class="lang-option">🇵🇹 Português</option>
+          <option value="en" class="lang-option">🇺🇸 English</option>
+        </select>
       </div>
     </header>
 
@@ -150,7 +179,7 @@
     <div class="modal-content ">
 
       <div class="modal-header border-0">
-        <h5 class="modal-title animated-title">Quem Somos?</h5>
+        <h5 class="modal-title animated-title" data-key="quem_somos">Quem Somos?</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
       </div>
 
@@ -158,6 +187,12 @@
 
         <!-- Carousel Bootstrap -->
         <div id="carouselQuemSomos" class="carousel slide mb-4" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselQuemSomos" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselQuemSomos" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselQuemSomos" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
           
           <div class="carousel-inner">
 
@@ -186,22 +221,35 @@
 
         <!-- Texto com animação -->
         <div class="quem-somos-text">
-          <h2 class="fade-in">O Nosso Restaurante</h2>
-          <p class="fade-in delay-1">
+          <h2 class="fade-in" data-key="o_nosso_restaurante">O Nosso Restaurante</h2>
+          <p class="fade-in delay-1" data-key="texto_1">
             Somos um restaurante dedicado a oferecer pratos frescos, saborosos e preparados com
             ingredientes selecionados. A nossa missão é proporcionar uma experiência gastronômica
             única, combinando tradição, inovação e hospitalidade.
           </p>
-          <p class="fade-in delay-2">
+          <p class="fade-in delay-2" data-key="texto_2">
             Cada prato é preparado com ingredientes selecionados para proporcionar uma experiência única.
           </p>
-          <p class="fade-in delay-3">
+          <p class="fade-in delay-3" data-key="texto_3">
             Cada detalhe é pensado para garantir que você se sinta em casa, desfrutando de um
             ambiente acolhedor e refeições preparadas com carinho por nossa equipa.
           </p>
-          <p class="fade-in delay-4">
+          <p class="fade-in delay-4" data-key="texto_4">
             Bem-vindo ao sabor que conquista todos os dias.
           </p>
+        </div>
+
+        <div class="map-container mt-4">
+          <h2 data-key="nossa_localização">Nossa Localização</h2>
+        <iframe
+          src=""
+          width="100%" 
+          height="300" 
+          style="border:1;" 
+          allowfullscreen="" 
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" id="iframe">
+        </iframe>
         </div>
 
       </div>
@@ -210,26 +258,99 @@
 </div>
 
 
+<!-- MODAL DE ZOOM DO PRATO -->
+<!-- Modal de Zoom -->
+<div id="zoomModal" class="zoom-modal">
+  <img id="zoomImg" class="zoom-modal-content">
+
+  <!-- Botão dos 3 pontinhos -->
+  <div id="openShare" class="share-btn">
+    ⋮
+  </div>
+
+  <!-- MENU DE PARTILHA -->
+  <div id="shareMenu" class="share-menu">
+    <div class="share-header">
+      <span>Compartilhe seus gostos</span>
+      <button id="closeShare" class="close-share">✕</button>
+    </div>
+
+    <div class="share-options">
+      <button class="share-item" id="shareWhatsapp">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </button>
+
+      <button class="share-item" id="shareFacebook">
+        <i class="fab fa-facebook"></i> Facebook
+      </button>
+
+      <button class="share-item" id="shareTwitter">
+        <i class="fab fa-twitter"></i> X (Twitter)
+      </button>
+
+      <button class="share-item" id="shareTelegram">
+        <i class="fab fa-telegram"></i> Telegram
+      </button>
+
+      <button class="share-item" id="shareDownload">
+        <i class="fas fa-download"></i> Download
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- FIM MODAL DE ZOOM DO PRATO -->
+
+
+
     <footer>
       <div class="footer-content d-flex justify-content-center align-items-center gap-4">
-        <p data-bs-toggle="modal" data-bs-target="#modalQuemSomos"> Quem Somos ? </p>
+        <p data-bs-toggle="modal" data-bs-target="#modalQuemSomos" data-key="quem_somos"> Quem Somos ? </p>
         <div class="logo-footer" onclick="menu_inicial()">
           <img src="assets/img/logo-bella-massa.png" alt="bella-massa-logo">
         </div>
       </div>
-      <p class="text-center joel-Nogueira" style="font-family: var(--fonte-secundaria); font-size:11px; margin-top:10px;">Desenvolvido por Joel Nogueira  &copy; 2025</p>
+      <a href="https://www.linkedin.com/in/joel-nogueira/" target="_blank" class="text-center joel-Nogueira" style="font-family: var(--fonte-secundaria); font-size:11px; margin-top:10px;" data-key="desenvolvido_por">Desenvolvido por Joel Nogueira  &copy; 2025</a>
     </footer>
 
   </main>
 
 
 
+  
+
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
+  <script>
+    // 1. Tenta pegar o ID pela URL
+    let restaurantID = new URLSearchParams(window.location.search).get("r");
+
+    // 2. Se existir, salva no localStorage
+    if (restaurantID) {
+      localStorage.setItem("restaurante", restaurantID);
+    } else {
+      // 3. Se não existir, tenta pegar do localStorage
+      restaurantID = localStorage.getItem("restaurante");
+    }
+
+    // 4. Confirma erro caso não exista mesmo
+    if (!restaurantID) {
+      console.error("⚠ Nenhum restaurante definido! URL precisa ter ?r=ID");
+    }
+
+    // Torna global
+    window.restID = 2 /*restaurantID;*/
+  </script>
+
   <script src="assets/js/main.js"></script>
   <script src="assets/js/login.js"></script>
+  <script src="assets/js/i18n.js"></script>
+
+    
+
 
   
 </body>

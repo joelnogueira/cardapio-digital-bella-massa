@@ -45,6 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
           setTimeout(() => inputTelefone.classList.remove("shake"), 300);
           inputTelefone.value = "";
           console.log(data.mensagem);
+          //VBRAR Se pin for errado
+          if (navigator.vibrate) navigator.vibrate(40); // vibração curta
+          console.log("Teste de vibração enviado!");
         }
       });
   });

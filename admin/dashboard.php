@@ -40,6 +40,7 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] != true) {
         <div>
           <ion-icon name="exit-outline" onclick="window.location.href='sair.php'"></ion-icon>
           <ion-icon name="key-outline" data-bs-toggle="modal" data-bs-target="#abrirModalRedifinirPin"></ion-icon>
+          <ion-icon name="create-outline" data-bs-toggle="modal" data-bs-target="#abrirModalEditar"></ion-icon>
         </div>
       </div>
     </header>
@@ -69,23 +70,63 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] != true) {
                   <input type="password" id="redifinirPin2" name="senha2" maxlength="4" class="pin-input" mb-2
                     placeholder="Digite o PIN Novo" autocomplete="off">
 
-                  <input type="text" id="redifinirTelefone" name="telefone" class="telefone-input" placeholder="Matem ou cadastre outro telefone" autocomplete="off">
-
                   <button type="submit" class="btn-pin">Enviar</button>
                 </form>
 
                 <small class="text-muted d-block mt-2"
                   style="color: var(--cor-laranja) !important; font-size:11px;">*PIN de 4 dígitos</small>
               </div>
-
-
-
             </div>
 
           </div>
         </div>
       </div>
       <!--Fim Modal -->
+
+
+
+
+      <!-- Modal editar dados -->
+      <div class="modal fade" id="abrirModalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content"
+            style="background-color: var(--cor-preta);
+          color:var(--cor-laranja);
+          font-family: var(--fonte-secundaria);">
+            <div class="modal-header">
+              <h1 class="modal-title fs-6" id="exampleModalLabel"> Atualizar Dados </h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+              <div class="text-center">
+                <form id="atualizarDados" method="post">
+
+                  <input type="text" id="atualizar" name="nome" class="nome-input atualizarInput mb-2"
+                    placeholder="Atualizar nome" autocomplete="off" autofocus>
+
+                  <input type="text" id="atualizar" name="endereco" class="endereco-input atualizarInput mb-2"
+                    placeholder="Atualizar endereço" autocomplete="on" autofocus>
+
+                    <input type="text" id="atualizar" name="map" class="maps-input atualizarInput" placeholder="Link Google Maps" autocomplete="off">
+
+                  <input type="text" id="atualizarTelefone" name="telefone" class="telefone-input atualizarInput" placeholder="Atualizar telefone" autocomplete="off">
+
+
+                  <button type="submit" class="btn-atualizar">Atualizar dados</button>
+                </form>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!--Fim Modal editar -->
+
+
+
+
 
 
 
@@ -97,6 +138,111 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] != true) {
 
         <span>+ Cadastrar novo prato</span>
       </button>
+
+      <!-- Modal QR_CODE -->
+      <!-- Botão -->
+      <button class="btn-abrirModalQR" onclick="abrirModalQR()">Gerar QR-Code</button>
+
+      <!-- MODAL -->
+      <!-- MODAL QR PERSONALIZADO -->
+      <div class="modal fade" id="modalQR" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content glass-effect">
+
+            <div class="modal-header">
+              <h5 class="modal-title">Gerar QR-Code Personalizado</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+              <div class="row">
+
+                <!-- 🟦 LADO ESQUERDO — Configurações -->
+                <div class="col-md-12">
+                  <h5>Personalização</h5>
+
+                  <div class="d-flex justify-content-start align-items-center flex-wrap gap-3 mt-3">
+                    <div>
+                      <div class="d-flex align-items-center gap-2">
+                        <label class="form-label mt-2">Cor dos Pontos</label>
+                        <input type="color" id="dotsColor" class="form-control form-control-sm" value="#000000">
+                      </div>
+                      <div class="d-flex align-items-center gap-2 ">
+                        <label class="form-label mt-2">Tipo dos Pontos</label>
+                        <select id="dotsType" class="form-select form-select-sm">
+                          <option value="square">Quadrado</option>
+                          <option value="dots">Redondo</option>
+                          <option value="classy">Elegante</option>
+                          <option value="classy-rounded">Elegante Arredondado</option>
+                          <option value="rounded">Arredondado</option>
+                          <option value="extra-rounded">Extra Arredondado</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="d-flex align-items-center gap-2 ">
+                        <label class="form-label mt-2">Cor dos Cantos</label>
+                        <input type="color" id="cornersColor" class="form-control form-control-sm" value="#000000">
+                      </div>
+                      <div class="d-flex align-items-center gap-2 ">
+                        <label class="form-label mt-2">Tipo dos Cantos</label>
+                        <select id="cornersType" class="form-select form-select-sm">
+                          <option value="square">Quadrado</option>
+                          <option value="dot">Redondo</option>
+                          <option value="extra-rounded">Extra Arredondado</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="d-flex align-items-center gap-2 ">
+                        <label class="form-label mt-2">Tamanho</label>
+                        <select id="qrSize" class="form-select form-select-sm">
+                          <option value="250">250 px</option>
+                          <option value="300" selected>300 px</option>
+                          <option value="350">350 px</option>
+                          <option value="400">400 px</option>
+                        </select>
+                      </div>
+                      <div class="d-flex align-items-center gap-2 ">
+                        <label class="form-label mt-2">Logo</label>
+                        <input type="file" id="logoInput" accept="image/*" class="input-file">
+                        <label class="btn-file-custom" for="logoInput">
+                          <ion-icon name="image-outline"></ion-icon> Selecionar logo
+                        </label>
+                      </div>
+                    </div>
+
+                  </div>
+                  <img id="previewLogo" style="max-width: 90px; margin-top: 10px; display:none;">
+
+                  <button class="btn  mt-3 w-100" onclick="gerarQRCode()">
+                    Criar QR-Code
+                  </button>
+                </div>
+              </div>
+
+              <!-- 🟧 LADO DIREITO — Preview -->
+              <div class="row">
+                <div class="col-md-12 d-flex flex-column align-items-center">
+                  <div id="qrPreview" class="p-4"></div>
+                  <a id="downloadQR" download="qrcode.png" class="btn  mt-3 d-none">
+                    Baixar QR-Code
+                  </a>
+                </div>
+              </div>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- FIM MODAL QR PERSONALIZADO -->
+
+
+
+
 
       <h3 class="text-light mt-4" style="font-family: var(--fonte-secundaria); font-size: 14px;">Pratos cadastrados</h3>
       <div id="listaPratos" class="lista-pratos"></div>
@@ -153,8 +299,8 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] != true) {
                 </div>
 
                 <div class="form-group">
-                  <label>Imagem do prato</label>
-                  <input type="file" name="imagem" accept="image/*" id="imgInput">
+                  <label>Imagem do prato (jpeg, png, jpg)</label>
+                  <input type="file" name="imagem" accept="image/*" id="imgInput" required>
                   <div class="img-preview" id="preview"></div>
                 </div>
 
@@ -207,13 +353,11 @@ if (!isset($_SESSION['logado']) || $_SESSION['logado'] != true) {
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
+
+  <!-- LIB PARA GERAR QR-CODE COM LOGO -->
+  <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
+
   <script src="../assets/js/admin/admin.js"></script>
-
-  <script>
-
-
-  </script>
-
 
 
 </body>

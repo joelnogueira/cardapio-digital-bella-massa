@@ -43,7 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $mimeTiposPermitidos = ['image/jpeg', 'image/png', 'image/jpg'];
         $tipoArquivo = mime_content_type($imagem['tmp_name']);
         if (!in_array($tipoArquivo, $mimeTiposPermitidos)) {
-            echo json_encode(['status' => 'erro', 'mensagem' => 'Tipo de imagem inválido.']);
+            echo json_encode(['status' => 'erro_de_imagem', 
+            'mensagem' => 'Tipo de imagem inválido. Adicione (jpeg, png, jpg) ']);
             exit;
         }
 

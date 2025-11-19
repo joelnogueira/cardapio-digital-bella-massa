@@ -8,6 +8,31 @@
 
   }
 
+
+  /* --- SCROLLBAR BELLA MASSA --- */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FEA855;
+  border-radius: 10px;
+  border: 1px solid #fff5f02c;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+
+
+
+
   :root{
     --cor-verde:#7DC441;
     --cor-amarela:#FFBC3F;
@@ -92,7 +117,7 @@
 
 
 
-.pin-input , .telefone-input {
+.pin-input, .atualizarInput {
   width: 100%;
   padding: 15px;
   font-size: 13px;
@@ -110,13 +135,18 @@
 .pin-input:focus {
   border-color: var(--cor-laranja);
 }
-.telefone-input:focus {
+
+.atualizarInput:focus {
   border-color: var(--cor-laranja);
 }
 
-.btn-pin {
+.btn-pin, .btn-atualizar {
   font-family: var(--fonte-secundaria);
   width: 100%;
+  height:30px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   margin-top: 12px;
   padding: 8px;
   background: var(--cor-verde);
@@ -128,6 +158,9 @@
 }
 
 .btn-pin:hover {
+  background: var(--cor-laranja);
+}
+.btn-atualizar:hover {
   background: var(--cor-laranja);
 }
 
@@ -197,6 +230,10 @@
 }
 
 .btn-submit {
+  height: 30px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(135deg, #7cc441ce, #7DC441);
   border: none;
   padding: 5px;
@@ -311,17 +348,18 @@
   font-size: 12px;
 }
 
-.btn-editar { background: #0a84ff; color: #fff; }
-.btn-excluir { background: #ff3b30; color: #fff; }
+.btn-editar { background: #0a84ff; color: #fff; height: 25px; display:flex; align-items:center; justify-content:center; }
+.btn-excluir { background: #ff3b30; color: #fff; height: 25px;  display:flex; align-items:center; justify-content:center;}
 
 
 
 .btn-novo-prato {
+  height: 30px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top:10px;
   padding: 8px 10px;
+  margin-top:10px;
   font-size: 14px;
   font-weight: 600;
   border-radius: 10px;
@@ -342,6 +380,107 @@
 
 .btn-novo-prato:active {
   transform: translateY(0);
+  transform: scale(0.99);
   box-shadow: none;
+}
+.btn-abrirModalQR{
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  padding: 8px 10px;
+  margin-top:10px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #ffbc3fce, #FFBC3F);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.25s;
+  letter-spacing: 0.3px;
+  box-shadow: 0 0 0px transparent;
+  font-family: var(--fonte-secundaria);
+}
+.btn-abrirModalQR:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px #ffbc3f5d;
+}
+
+.btn-abrirModalQR:active {
+  transform: translateY(0);
+  transform: scale(0.99);
+  box-shadow: none;
+}
+
+.modal-body .btn{
+  height:30px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:14px;
+  font-weight:bold;
+  color:white;
+  background-color: var(--cor-verde);
+}
+.modal-body .btn:hover{
+  background-color: var(--cor-laranja);
+}
+
+.modal-header h5{
+  font-size:16px;
+}
+
+.col-md-12 h5{
+  font-size:15px;
+}
+.form-label {
+  font-size: 13px;
+}
+.form-control{
+  width:50px;
+  height:25px;
+  background-color:#f2f2f2;
+  color: #000;
+  font-weight: 500;
+  border-radius: 6px;
+}
+.form-select{
+  width:150px;
+  height:25px;
+  background-color:#f2f2f2;
+  color: #000;
+  font-weight: 500;
+  border-radius: 6px;
+}
+/* Esconde o input real */
+.input-file {
+  display: none;
+}
+
+/* Botão estilizado */
+.btn-file-custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background-color:#f2f2f2;
+  color: #000;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: 0.3s;
+  height:25px;
+}
+
+/* Hover */
+
+
+/* efeito ao clicar */
+.btn-file-custom:active {
+  border:2px solid #0056b3;
+  transform: scale(0.99);
 }
 

@@ -122,18 +122,59 @@
 
   
 
-  .endereco{
+  .dados{
     margin-top: 3px;
-    color: white;
-    margin-left:30px;
-    
-    & p{
+    & p , .endereco{
         font-family: var(--fonte-secundaria);
-        font-size:12px;
+        font-size:11px;
         letter-spacing: 1px;
+        margin-top:20px;
+        color: var(--cor-laranja);
+          font-weight: 500;
+        
       }
     
   }
+
+
+
+  /* IDIOMAS */
+.lang-option {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #000;
+  color: #ddd;
+  font-weight: 500;
+}
+
+
+/* Vidro fosco */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+}
+
+/* Card animado */
+.qr-card {
+  background: rgba(255,255,255,0.25);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  animation: scaleIn 0.4s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 
 
 
@@ -215,7 +256,7 @@
 
 /* Imagens do slider */
 .slide-img {
-  height: 40vh;
+  height: 35vh;
   object-fit: cover;
   border-radius: 15px;
 }
@@ -261,11 +302,31 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+.map-container{
+  margin-top:20px;
+  margin-bottom: 30px;
+  width:100%;
+  height:300px;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow: 0px 4px 6px 0px #000000b8;
+  & h2{
+    font-family: var(--fonte-secundaria);
+    font-size:14px;
+    color:white;
+    margin-bottom:10px;
+  }
+}
+
 
 
 footer{
   margin-top:30px;
   padding-bottom:5px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   & p{
     text-decoration:none;
     color:var(--cor-laranja);
@@ -320,6 +381,10 @@ footer{
 .btn-pin {
   font-family: var(--fonte-secundaria);
   width: 100%;
+  height:30px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   margin-top: 12px;
   padding: 8px;
   background: var(--cor-verde);
@@ -380,7 +445,6 @@ footer{
     margin-bottom: 15px;
     padding: 10px;
     height: auto;
-    cursor:pointer;
 }
 .listaPrato:hover{
     transform: scale(1.02);
@@ -416,7 +480,130 @@ footer{
       width:150px;
       object-fit:cover;
       border-radius:8px;
+      cursor:pointer;
+
     }
 
   }
 
+
+
+  /*MODAL DO ZOOM DO PRATO*/
+  /* Modal invisível inicialmente */
+  /* --- MODAL DE ZOOM --- */
+
+
+/* Botão três pontinhos */
+/* --- MODAL DE ZOOM --- */
+.zoom-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(1px);
+  --webkit-backdrop-filter: blur(1px);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.zoom-modal-content {
+  max-width: 70%;
+  max-height: 70%;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  animation: zoomFade 0.25s ease;
+}
+
+@keyframes zoomFade {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* 3 pontinhos */
+.share-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  padding-bottom: 2px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #FEA855;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  backdrop-filter: blur(3px);
+  background-color: #dddddd63;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* MENU DE PARTILHA */
+.share-menu {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 20px 20px 0 0;
+  padding: 20px;
+  transition: 0.3s ease;
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+  z-index: 1100;
+  font-family: var(--fonte-secundaria);
+  font-size: 14px;
+  color: #FEA855;
+
+}
+
+.share-menu.show {
+  bottom: 0;
+}
+
+.share-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-weight: bold;
+
+}
+
+.close-share {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.share-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #FEA855;
+}
+
+.share-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  background: #FEA855;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.share-item:hover {
+  background: #ececec;
+}

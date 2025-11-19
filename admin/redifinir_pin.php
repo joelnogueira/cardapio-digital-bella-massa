@@ -7,7 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $senhaAntiga = $_POST['senha'] ?? '';
     $senhaNova   = $_POST['senha2'] ?? '';
-    $telefone   = $_POST['telefone'] ?? '';
     $idUsuario   = $_SESSION['usuario'] ?? null;
 
     // Verificar sessão
@@ -16,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
     // Verificar campos
-    if (empty($senhaAntiga) || empty($senhaNova) || empty($telefone)) {
+    if (empty($senhaAntiga) || empty($senhaNova)) {
         echo json_encode(['status' => 'campos_vazios']);
         exit;
     }
@@ -33,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
      // Gerar o hash da nova senha
     $hashNovaSenha = password_hash($senhaNova, PASSWORD_DEFAULT);
     // Atualizar senha e telefone
-    $stmt = $pdo->prepare("UPDATE usuario SET senha = ? , telefone = ? WHERE id = ?");
-    $stmt->execute([$hashNovaSenha, $telefone, $idUsuario]);
+    $stmt = $pdo->prepare("UPDATE usuario SET senha = ? WHERE id = ?");
+    $stmt->execute([$hashNovaSenha, $idUsuario]);
 
     echo json_encode(['status' => 'sucesso']);
     exit;
