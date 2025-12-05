@@ -10,7 +10,7 @@
 
 > **Clique para:** 
 - [Acessar ao Site](https://cardapio-bella-massa.wuaze.com/?r=1)
-- [Acessar a Documentação do Site](https://cardapio-bella-massa.wuaze.com/?r=1)
+- [Acessar a Documentação do Site](https://joelnogueira.github.io/cardapio-digital-bella-massa/)
 
 
 ### 🎯 Funcionalidades Principais
@@ -44,4 +44,4 @@
 
 ## 📦 Instalação
 
-- [Acessar a Documentação do Site](https://cardapio-bella-massa.wuaze.com/?r=1)
+- [Acessar a Documentação do Site](https://joelnogueira.github.io/cardapio-digital-bella-massa/)
