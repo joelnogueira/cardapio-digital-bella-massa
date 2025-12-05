@@ -33,7 +33,7 @@ function gerarQRCode() {
 
   const logoFile = document.getElementById("logoInput").files[0];
 //Mudar depois pelo dominio de produção
-  const url = `http://localhost/code/projetos/backend/cardapio-digital/cardapio-1/?r=${userID}`;
+  const url = `https://cardapio-bella-massa.wuaze.com?r=${userID}`;
 
 
   // Se já existir, limpar

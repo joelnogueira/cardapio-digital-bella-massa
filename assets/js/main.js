@@ -43,7 +43,7 @@ fetch(`admin/dados_restaurante.php?r=${window.restID}`)
     document.getElementById("rest_nome").innerText = dados.nome;
     document.getElementById("rest_endereco").innerText = dados.endereco;
     document.getElementById("iframe").src = dados.google_maps;
-
+    
     // salvar para o WhatsApp automático
     window.restTelefone = dados.telefone;
   });

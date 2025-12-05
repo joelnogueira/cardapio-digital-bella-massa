@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Documentação | Cardápio Digital Bella Massa</title>
+
+  <link rel="shortcut icon" href="../assets/img/icon-image.png" type="image/x-icon">
+
+  <!-- Animate css -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <!-- AOS Animate scroll -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+  <style>
+    
+    @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    
+    
+    :root{
+      --bg:#0f1720; --card:#0b1220; --accent:#F97316; --muted:#9AA4B2; --text:#E6EEF3;
+      --glass: rgba(255,255,255,0.04);
+    }
+
+    
+
+    body{font-family: "Exo 2", Inter,  Roboto; margin:0; background:linear-gradient(180deg,#071027 0%, #081426 100%); color:var(--text); -webkit-font-smoothing:antialiased;}
+    header{display:flex;align-items:center;gap:12px;padding:20px 28px;border-bottom:1px solid rgba(255,255,255,0.03);}
+    header img{height:48px;}
+    header h1{font-size:18px;margin:0}
+    .wrap{display:flex;min-height:calc(100vh - 88px);}
+    nav.side{width:300px;padding:18px;border-right:1px solid rgba(255,255,255,0.03);box-shadow:inset -1px 0 0 rgba(255,255,255,0.02);background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);}
+    nav.side h2{font-size:13px;margin:0 0 12px 0;color:var(--muted)}
+    nav.side a{display:block;padding:10px 12px;margin:4px 0;border-radius:8px;color:var(--text);text-decoration:none;font-size:14px}
+    nav.side a.active{background:linear-gradient(90deg, rgba(249,115,22,0.16), rgba(249,115,22,0.06));box-shadow:0 4px 18px rgba(249,115,22,0.06);}
+    main.doc{flex:1;padding:28px 36px;overflow:auto}
+    .card{background:var(--card);border-radius:12px;padding:18px;margin-bottom:18px;box-shadow:0 6px 24px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.02)}
+    h3{margin:0 0 10px 0}
+    p{color:var(--muted);line-height:1.45}
+    pre{background:#081224;padding:12px;border-radius:8px;overflow:auto;color:#d6f0ff}
+    code{font-family: monospace;background: rgba(255,255,255,0.02);padding:2px 6px;border-radius:6px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    table{width:100%;border-collapse:collapse;color:var(--muted)}
+    table th, table td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,0.03);font-size:13px}
+    .diagram{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:12px;border-radius:10px}
+    .img-placeholder{width:100%;height:180px;border-radius:8px;background:linear-gradient(90deg,#071B2A, #092437);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px}
+    .small{font-size:12px;color:var(--muted)}
+    .footer{padding:18px;text-align:center;color:var(--muted);font-size:12px}
+    /* responsive */
+    @media (max-width:980px){nav.side{display:none} .wrap{flex-direction:column} nav.side.mobile{display:block}}
+    /* a few niceties */
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:12px;color:var(--muted)}
+    .muted{color:var(--muted)}
+    .btn{display:inline-block;padding:8px 12px;background:var(--accent);color:#081426;border-radius:8px;font-weight:600;text-decoration:none}
+    .code-block{background:#06111a;padding:10px;border-radius:8px;color:#bfefff;overflow:auto}
+  </style>
+</head>
+<body>
+  <header class="animate__animated animate__fadeInDown">
+    <img src="img/logo-bella-massa.png" alt="Bella Massa" onerror="this.style.opacity=.25">
+    <div>
+      <h1>Documentação — Cardápio Digital <span class="muted">· Bella Massa</span></h1>
+      <div class="small">Versão: <strong>1.0</strong> — Data: 19/11/2025</div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <nav class="side animate__animated animate__fadeInLeft animate__delay-1s" aria-label="Navegação da documentação">
+      <h2>Sumário</h2>
+      <a href="#resumo" class="active">Resumo executivo</a>
+      <a href="#escopo">Escopo</a>
+      <a href="#arquitetura">Arquitetura & Tecnologias</a>
+      <a href="#design">Design & Usabilidade</a>
+      <a href="#instalacao">Manual de Instalação</a>
+      <a href="#usuario">Manual do Usuário</a>
+      <a href="#testes">Testes</a>
+      <a href="#manutencao">Manutenção</a>
+      <a href="#anexos">Anexos</a>
+    </nav>
+
+    <main class="doc">
+      <!-- RESUMO -->
+      <section id="resumo" class="card  animate__animated animate__fadeInRight animate__delay-1s">
+        <h3>Resumo executivo</h3>
+        <p>O <strong>Cardápio Digital — Bella Massa</strong> é uma aplicação web responsiva cujo objetivo é permitir que restaurantes publiquem um cardápio dinâmico acessível via QR Code, com painel administrativo para gerir pratos, imagens e configurações. O sistema prioriza experiência mobile, baixo consumo de dados e facilidade de impressão de QR codes personalizados.</p>
+        <div class="grid" style="margin-top:12px">
+          <div class="card small">
+            <strong>Principais benefícios</strong>
+            <ul>
+              <li>Atualização de menu em tempo real;</li>
+              <li>Acesso por QR (sem necessidade de login para clientes);</li>
+              <li>Controle de múltiplos restaurantes na mesma instância;</li>
+              <li>Integração com WhatsApp e opções de compartilhamento.</li>
+            </ul>
+          </div>
+          <div class="card small">
+            <strong>Stakeholders</strong>
+            <ul>
+              <li>Donos de restaurantes (admins)</li>
+              <li>Clientes / visitantes</li>
+              <li>Equipe de suporte / manutenção</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ESCOPO -->
+      <section id="escopo" class="card animate__animated animate__fadeInUp animate__delay-2s">
+        <h3>Escopo do projeto</h3>
+        <p>Inclui funcionalidades para (mínimo viável):</p>
+        <ul>
+          <li>Painel admin: CRUD de pratos, upload de imagens, gestão de usuários e PIN de acesso;</li>
+          <li>Frontend público: visualização do cardápio por restaurante via parâmetro URL/QR;</li>
+          <li>Gerador de QR-Code personalizado com logo e opções de estilo;</li>
+          <li>Integração com WhatsApp para envio de pedidos;</li>
+          <li>Suporte multilíngue (pt/en) e otimização mobile-first.</li>
+        </ul>
+      </section>
+
+      <!-- ARQUITETURA -->
+      <section id="arquitetura" class="card" data-aos="fade-up"data-aos-duration="1000">
+        <h3>Arquitetura & Tecnologias</h3>
+        <p>Arquitetura simples cliente-servidor com PHP + MySQL no backend e HTML/CSS/JS no frontend. Implementação orientada a APIs internas (endpoints .php que retornam JSON).</p>
+
+        <div style="margin-top:10px" class="diagram">
+          <strong>Diagrama de arquitetura (visão geral)</strong>
+          <div style="margin-top:12px"></div>
+
+          <!-- Arquitetura SVG -->
+          <svg width="100%" height="240" viewBox="0 0 1000 240" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#0b1220"/><stop offset="1" stop-color="#071B2A"/></linearGradient>
+            </defs>
+
+            <!-- Browser -->
+            <rect x="20" y="20" rx="10" ry="10" width="220" height="80" fill="#07172a" stroke="#0b2b3a"/>
+            <text x="130" y="52" fill="#9fbfd6" font-size="14" text-anchor="middle">Cliente (Browser)</text>
+            <text x="130" y="72" fill="#6d8fa3" font-size="12" text-anchor="middle">mobile / desktop</text>
+
+            <!-- CDN -->
+            <rect x="280" y="10" rx="10" ry="10" width="180" height="40" fill="#07172a"/>
+            <text x="370" y="36" fill="#9fbfd6" font-size="12" text-anchor="middle">CDN / Assets</text>
+
+            <!-- App Server -->
+            <rect x="510" y="20" rx="10" ry="10" width="220" height="80" fill="#07172a"/>
+            <text x="620" y="52" fill="#9fbfd6" font-size="14" text-anchor="middle">Servidor (PHP)</text>
+            <text x="620" y="72" fill="#6d8fa3" font-size="12" text-anchor="middle">endpoints REST (.php)</text>
+
+            <!-- DB -->
+            <rect x="750" y="120" rx="8" ry="8" width="200" height="90" fill="#081826"/>
+            <text x="850" y="145" fill="#9fbfd6" font-size="13" text-anchor="middle">Base de Dados MySQL</text>
+            <text x="850" y="165" fill="#6d8fa3" font-size="12" text-anchor="middle">tabelas: usuario, pratos, pedidos</text>
+
+            <!-- Arrows -->
+            <path d="M240 60 L280 40" stroke="#2fa7ff" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+            <path d="M460 60 L510 60" stroke="#2fa7ff" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+            <path d="M620 100 L620 120" stroke="#2fa7ff" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+            <path d="M620 210 L780 210" stroke="#2fa7ff" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+            <defs>
+              <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 L2,3 z" fill="#2fa7ff" />
+              </marker>
+            </defs>
+          </svg>
+
+        </div>
+
+        <div style="margin-top:12px" class="grid">
+          <div data-aos="zoom-in"data-aos-duration="2000">
+            <strong>Principais tecnologias</strong>
+            <ul>
+              <li><b>Backend</b>: PHP 7.4+/PDO</li>
+              <li><b>Banco</b>: MySQL / MariaDB</li>
+              <li><b>Frontend</b>: HTML5, CSS3, JavaScript (ES6+), Bootstrap 5</li>
+              <li><b>Assets</b>: imagens otimizadas (WebP quando possível)</li>
+            </ul>
+          </div>
+          <div data-aos="zoom-in">
+            <strong>Segurança e práticas</strong>
+            <ul>
+              <li>Uso de prepared statements (PDO) para todas as consultas SQL;</li>
+              <li>hash de PINs com <code>password_hash()</code>;</li>
+              <li>validação do lado servidor e cliente;</li>
+              <li>controle de sessão e proteção de rotas admin.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- DESIGN -->
+      <section id="design" class="card">
+        <h3>Design & Usabilidade</h3>
+        <p>Design mobile-first, navegação por categorias, carregamento dinâmico via <code>fetch()</code> e foco em desempenho e acessibilidade.</p>
+
+        <div class="grid" style="margin-top:12px">
+          <div>
+            <strong>Componentes principais</strong>
+            <ul>
+              <li>Header com logo e selector de idioma;</li>
+              <li>Área principal (#stage) que carrega páginas dinamicamente;</li>
+              <li>Modal de admin, modal de zoom de imagens, geração de QR;</li>
+              <li>Botões grandes e legíveis para mobile, atalho WhatsApp.</li>
+            </ul>
+          </div>
+          <div  data-aos="zoom-out-left"data-aos-duration="2000">
+            <strong>Imagens & Assets</strong>
+            <div class="img-placeholder"><img src="img/logo-bella-massa.png" alt="logo-bella-massa"></img> </div>
+          </div>
+        </div>
+
+        <h4 style="margin-top:12px">Fluxo de navegação (cliente)</h4>
+        <div class="diagram" style="margin-top:6px">
+          <!-- Flow SVG -->
+          <svg viewBox="0 0 1000 140" width="100%" height="140">
+            <rect x="10" y="10" rx="8" width="200" height="40" fill="#0b2130" stroke="#1b4963"/>
+            <text x="110" y="36" fill="#bfe9ff" font-size="13" text-anchor="middle">Escaneia QR / entra por link</text>
+
+            <rect x="260" y="10" rx="8" width="220" height="40" fill="#0b2130"/>
+            <text x="370" y="36" fill="#bfe9ff" font-size="13" text-anchor="middle">Front-end: carrega / renderiza</text>
+
+            <rect x="560" y="10" rx="8" width="220" height="40" fill="#0b2130"/>
+            <text x="670" y="36" fill="#bfe9ff" font-size="13" text-anchor="middle">API PHP: listar_pratos_cliente.php?r=ID</text>
+
+            <path d="M210 30 L260 30" stroke="#2fa7ff" stroke-width="2" marker-end="url(#ar)"/>
+            <path d="M480 30 L560 30" stroke="#2fa7ff" stroke-width="2" marker-end="url(#ar)"/>
+
+            <defs><marker id="ar" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 L2,3 z" fill="#2fa7ff" /></marker></defs>
+          </svg>
+        </div>
+      </section>
+
+      <!-- INSTALAÇÃO -->
+      <section id="instalacao" class="card" data-aos="fade-up"data-aos-duration="2000">
+        <h3>Manual de instalação</h3>
+        <p>Passo a passo mínimo para levantar o ambiente em um servidor (Linux) ou local (XAMPP/WAMP):</p>
+
+        <ol>
+          <li>Fazer clone do repositório: <code>git clone https://cardapio-digital-bella-massa.git</code></li>
+          <li>Configurar virtual host (opcional) ou colocar pastas em <code>htdocs</code> (XAMPP).</li>
+          <li>Instalar a base de dados e importar o arquivo SQL (<code>db_cardapio_estruture.sql</code>):</li>
+        </ol>
+
+        <pre class="code-block">
+// Exemplo (MySQL)
+mysql -u root -p
+CREATE DATABASE cardapio_1;
+USE cardapio_1;
+SOURCE /cardapio-digital-bella-massa/db/db_cardapio_estruture_cardapio.sql;
+        </pre>
+
+        <ol start="4">
+          <li>Configurar arquivo de ambiente / config.php com credenciais PDO:</li>
+        </ol>
+
+        <pre class="code-block">
+&lt;?php
+// config.php (exemplo)
+$host = 'localhost';
+$db   = 'cardapio_1';
+$user = 'root';
+$pass = '';
+$dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";
+$pdo = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+?&gt;
+        </pre>
+
+        <ol start="6">
+          <li>Garantir permissão em <code>/assets/uploads</code> para mover imagens (<code>chmod 775</code>).</li>
+          <li>Testar endpoints: <code>admin/listar_pratos_cliente.php?r=1</code>.</li>
+        </ol>
+      </section>
+
+      <!-- USUARIO -->
+      <section id="usuario" class="card" data-aos="fade-up"data-aos-duration="2000">
+        <h3>Manual do usuário</h3>
+        <h4>Admin (dono do restaurante)</h4>
+        <ul>
+          <li>Login com PIN via painel administrativo;</li>
+          <li>Após login: inserir pratos, imagens, definir destaques (Prato da casa / Mais vendido / Novo no menu);</li>
+          <li>Gerar QR-Code: botão "Gerar QR" cria link público com <code>?r=USER_ID</code> para impressão;</li>
+          <li>Ao editar dados do restaurante, campos vazios mantêm valores antigos;</li>
+        </ul>
+
+        <h4>Cliente</h4>
+        <ul>
+          <li>Escanear QR-Code abre o cardápio do restaurante;</li>
+          <li>Pode navegar por categorias, ver imagens (zoom), e enviar pedido via WhatsApp;</li>
+          <li>Sem necessidade de login; acesso somente leitura.</li>
+        </ul>
+
+        <div style="margin-top:10px">
+          <strong>Exemplo de endpoint público</strong>
+          <pre class="code-block">GET /admin/listar_pratos_cliente.php?r=123</pre>
+        </div>
+      </section>
+
+      <!-- TESTES -->
+      <section id="testes" class="card" data-aos="fade-up"data-aos-duration="2000">
+        <h3>Plano de testes</h3>
+        <p>Executar os cenários (manuais e automatizados):</p>
+        <ol>
+          <li>Testes unitários simples em PHP para funções de validação (por ex.: validaTelefone())</li>
+          <li>Testes de integração: inserir prato -> listar via API pública -> verificar JSON</li>
+          <li>Testes E2E (opcional): usar Cypress ou Playwright para simular interação móvel</li>
+        </ol>
+
+        <h4>Checklist rápido</h4>
+        <ul>
+          <li>Preparar backup antes de deploy;</li>
+          <li>Habilitar logs (erros e access);</li>
+          <li>Testar com conexões lentas (DevTools network throttling).</li>
+        </ul>
+      </section>
+
+      <!-- MANUTENÇÃO -->
+      <section id="manutencao" class="card" data-aos="fade-up"data-aos-duration="2000">
+        <h3>Manutenção</h3>
+        <ul>
+          <li>Atualizar dependências (Bootstrap, libs JS) mensalmente;</li>
+          <li>Revisar permissões de pasta (uploads);</li>
+          <li>Monitorar logs e utilização de disco;</li>
+          <li>Política de backup: diário incremental + semanal full.</li>
+        </ul>
+      </section>
+
+      <!-- ANEXOS -->
+      <section id="anexos" class="card" data-aos="fade-up"data-aos-duration="2000">
+        <h3>Anexos & Referências</h3>
+
+        <h4>Esquema simplificado das tabelas</h4>
+        <pre class="code-block">
+CREATE TABLE usuario (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(120),
+  telefone VARCHAR(30),
+  senha VARCHAR(255),
+  endereco TEXT,
+  google_maps TEXT
+);
+
+CREATE TABLE pratos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  id_usuario INT,
+  nome VARCHAR(255),
+  descricao TEXT,
+  destaque ENUM('Prato da casa','Mais vendido','Novo no menu'),
+  preco DECIMAL(10,2),
+  categoria ENUM('Entrada','Prato principal','Sobremesa','Bebida'),
+  imagem TEXT,
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id) ON DELETE CASCADE
+);
+        </pre>
+
+        <h4>Endpoints (exemplos)</h4>
+        <table data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+          <thead><tr><th>Endpoint</th><th>Método</th><th>Descrição</th></tr></thead>
+          <tbody>
+            <tr><td>/admin/login.php</td><td>POST</td><td>Login por PIN — retorna sessão</td></tr>
+            <tr><td>/admin/listar_pratos.php</td><td>GET</td><td>Listar pratos (admin — requer sessão)</td></tr>
+            <tr><td>/admin/listar_pratos_cliente.php?r={id}</td><td>GET</td><td>Listar pratos públicos do restaurante {id}</td></tr>
+            <tr><td>/admin/adicionar_prato.php</td><td>POST</td><td>Adicionar/editar prato (admin)</td></tr>
+          </tbody>
+        </table>
+
+        <h4 style="margin-top:12px">Notas finais</h4>
+        <p class="small">Este documento é um ponto de partida. Para produção recomenda-se configurar HTTPS, WAF (Cloudflare) e automação de deploy (CI/CD).</p>
+      </section>
+
+      <div class="footer card">
+        <div>Desenvolvido por <strong>Joel Nogueira</strong> · <span class="small">Cardápio Digital — Bella Massa</span></div>
+      </div>
+    </main>
+  </div>
+
+
+      <!-- AOS Animation Scroll -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+      <script>
+      AOS.init();
+    </script>
+  <!-- ----------fim aos animation scroll -->
+
+
+  <script>
+
+    // preencher data
+
+    // Smooth scroll para nav
+    document.querySelectorAll('nav.side a').forEach(a=>{
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        document.querySelectorAll('nav.side a').forEach(x=>x.classList.remove('active'));
+        this.classList.add('active');
+        const id = this.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+  </script>
+</body>
+</html>

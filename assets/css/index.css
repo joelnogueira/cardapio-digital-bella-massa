@@ -124,19 +124,23 @@
 
   .dados{
     margin-top: 3px;
-    & p , .endereco{
-        font-family: var(--fonte-secundaria);
-        font-size:11px;
-        letter-spacing: 1px;
-        margin-top:20px;
-        color: var(--cor-laranja);
-          font-weight: 500;
-        
+    & .dados-body{
+      position: relative;
+      font-family: var(--fonte-secundaria);
+      font-size:12px;
+      letter-spacing: 1px;
+      color: var(--cor-laranja);
+      font-weight: 500;
       }
-    
+
   }
 
-
+.idioma{
+    position:absolute;
+    top:75%;
+    right:0;
+    z-index:2;
+}
 
   /* IDIOMAS */
 .lang-option {
